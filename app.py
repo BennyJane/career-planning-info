@@ -7,12 +7,14 @@
 import os
 
 from flask import Flask, render_template
-from flask_wtf.csrf import CSRFProtect
+# from flask_wtf.csrf import CSRFProtect
 
 from config import config
 from extension import register_ext
 from log import register_logging
 from web.views import register_bp
+from web.models import JobInfo, Point
+
 
 config_name = os.getenv("FLASK_CONFIG", 'development')
 app = Flask(__name__)

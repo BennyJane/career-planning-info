@@ -6,20 +6,23 @@
         <meta charset="utf-f">
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %} {% endblock title %} - {{ admin.blog_title|default('Blog Title') }}</title>
+        <title>{% block title %} {% endblock title %} - Benny Jane</title>
         <link rel="stylesheet"
-              href="{{ url_for('static', filename='css/%s.min.css' % request.cookies.get('theme', 'Lux')) }}"
+              href="{{ url_for('static', filename='css/Litera.min.css') }}"
               type="text/css">
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+        {#        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">#}
     {% endblock head %}
 </head>
-<body>
-{% block nav %}
-{% endblock nav %}
+<body style="margin: 0 auto;">
+<div class="col-md-8 container">
+    {% block nav %}
+        {% include '_nav.html' %}
+    {% endblock nav %}
 
-{% block mainBody %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+</div>
+
 
 {% block scripts %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
