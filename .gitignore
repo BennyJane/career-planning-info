@@ -135,8 +135,10 @@ dmypy.json
 upload/demo-1/uploads/*
 */logs/*
 */log_*/*
+*.log
 
 *.iml
 *.xml
+
 
 autoGit.sh
