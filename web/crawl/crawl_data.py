@@ -9,7 +9,7 @@ import logging
 import random
 import time
 from pprint import pprint
-
+import json
 import pandas as pd
 from lxml import etree
 from selenium import webdriver
@@ -145,6 +145,7 @@ class Crawl:
         res = self.root.xpath("//div[@class='job-banner']/div[@class='job-tags']//text()")
         if res:
             res = [item.strip() for item in res if item.strip()]
+            res = json.dumps(res, ensure_ascii=False)
         return res
 
     def updateTime(self):
@@ -163,6 +164,7 @@ class Crawl:
         res = self.root.xpath("//div[@class='job-detail']/div[@class='detail-content']/div/div[@class='text']//text()")
         if res:
             res = [item.strip().strip('\r\n').replace(' ', '').replace('\n', '') for item in res if item.strip()]
+            res = json.dumps(res, ensure_ascii=False)
         return res
 
     def companyInfo(self):
@@ -181,14 +183,14 @@ class Crawl:
         return res
 
     def testIndex(self):
-        with open("./index.html", 'r', encoding='utf-8') as f:
+        with open("./targetHtml/index.html", 'r', encoding='utf-8') as f:
             html = f.read()
             self.root = etree.HTML(html)
             # print(html)
         self.jobUrl()
 
     def testContent(self):
-        with open("./content.html", 'r', encoding='utf-8') as f:
+        with open("./targetHtml/content.html", 'r', encoding='utf-8') as f:
             html = f.read()
             self.root = etree.HTML(html)
 
