@@ -1,18 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock title %}
+{% block title %}career-planning{% endblock title %}
 
 {% block content %}
-    <!--首页Banner-->
-    <div class="jumbotron">
-        <h1 class="display-3">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-            to
-            featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper container" id="kt_wrapper">
+                {% block nav %}
+                    {% include '_nav.html' %}
+                {% endblock %}
+                {% include 'dashboard/content.html' %}
+            </div>
+        </div>
     </div>
-
+    {% include 'secondary/extra.html' %}
+    {% include 'secondary/scrolltop.html' %}
+    {% include 'secondary/userPlane.html' %}
+    {% include 'secondary/stickyToolbar.html' %}
 {% endblock %}
+
+

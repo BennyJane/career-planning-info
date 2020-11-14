@@ -7,17 +7,19 @@
 import os
 
 from flask import Flask, render_template
-# from flask_wtf.csrf import CSRFProtect
 
 from config import config
 from extension import register_ext
 from log import register_logging
 from web.views import register_bp
-from web.models import JobInfo, Point
 
+# from flask_wtf.csrf import CSRFProtect
+
+base_dir = os.path.abspath(os.path.dirname(__file__))
+static_file = os.path.join(base_dir, 'static')
 
 config_name = os.getenv("FLASK_CONFIG", 'development')
-app = Flask(__name__)
+app = Flask(__name__, static_folder=static_file)
 app.config.from_object(config[config_name])
 register_logging(app)
 register_ext(app)
@@ -42,3 +44,7 @@ def internal_server_error(e):
 # @app.errorhandler(CSRFProtect)
 # def handle_csrf_error(e):
 #     return render_template('errors/400.html', description=e.description), 400
+
+
+if __name__ == '__main__':
+    app.run()

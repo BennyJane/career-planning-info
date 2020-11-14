@@ -1,37 +1,79 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
+<!--begin::Header-->
+<div id="kt_header" class="header header-fixed">
+    <!--begin::Container-->
+    <div class="container">
+        <!--begin::Header Menu Wrapper-->
+        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+            <!--begin::Logo-->
+            <div class="header-logo mr-10 d-none d-lg-flex">
+                <a href="#">
+                    <img alt="Logo" src="{{ url_for('static', filename='images/logo-4.svg') }}" class="h-35px">
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+            <!--end::Logo-->
+            <!--begin::Header Menu-->
+            <div id="kt_header_menu"
+                 class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
+                <!--begin::Header Nav-->
+                <ul class="menu-nav">
+                    <li class="menu-item menu-item-active" aria-haspopup="true">
+                        <a href="#" class="menu-link">
+                            <span class="menu-text">看板</span>
+                        </a>
+                    </li>
+                    <li class="menu-item" aria-haspopup="true">
+                        <a href="#" class="menu-link">
+                            <span class="menu-text">数据</span>
+                            <span class="menu-desc"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!--end::Header Nav-->
+            </div>
+            <!--end::Header Menu-->
+        </div>
+        <!--end::Header Menu Wrapper-->
+        <!--begin::Topbar-->
+        <div class="topbar">
+            <div class="topbar-item mr-1 mr-lg-5">
+                <div class="btn-clean" style="transform: rotate(90deg)">
+                    <svg t="1605325307233" class="icon" viewBox="0 0 1033 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="5779" width="32" height="32">
+                        <path d="M12.8 507.392c0 280.064 226.816 507.392 507.392 507.392s507.392-226.816 507.392-507.392c0-280.064-226.816-507.392-506.88-507.392S12.8 226.816 12.8 507.392c0-0.512 0-0.512 0 0z"
+                              fill="#FFA800" opacity=".1" p-id="5780"></path>
+                        <path d="M669.696 514.56c-14.336 0-26.112 13.824-26.112 30.72v47.616c0 2.048-2.048 4.096-4.096 4.096s-4.096-2.048-4.096-4.096v-68.608c0-16.896-11.776-30.72-26.112-30.72s-26.112 13.824-26.112 30.72V578.56c0 2.048-2.048 4.096-4.096 4.096s-4.096-2.048-4.096-4.096V497.664c0-16.896-11.776-30.72-26.112-30.72s-26.112 13.824-26.112 30.72v61.952c0 2.048-2.048 4.096-4.096 4.096s-4.096-2.048-4.096-4.096V410.112c0-14.336-11.776-26.112-26.112-26.112h-1.536c-13.824 0.512-25.6 12.288-25.6 26.624v207.36c0 2.56-2.048 4.096-4.096 4.096-1.024 0-2.56-0.512-3.072-1.536l-40.96-47.616c-5.12-5.632-11.264-8.704-18.432-8.704-6.656 0-13.312 3.072-18.432 8.704-10.24 11.776-10.24 32.256 0 43.52l43.008 49.664c11.264 12.8 21.504 25.6 30.208 36.352 20.48 25.088 36.352 44.544 54.784 57.856 20.48 14.336 42.496 20.992 72.704 20.992 38.4 0 67.584-9.728 87.552-28.672 18.944-18.432 28.672-44.032 28.672-77.824v-129.024c2.56-16.896-9.216-31.232-23.552-31.232z"
+                              fill="#FFA800" p-id="5781"></path>
+                        <path d="M428.544 444.416c-0.512 0-1.536-0.512-2.048-1.024-14.848-16.384-23.552-37.376-23.552-58.88 0-47.616 39.424-87.04 87.04-87.04s87.04 39.424 87.04 87.04c0 21.504-7.68 41.472-22.016 57.344-1.024 1.024-2.56 1.024-3.584 0-1.024-1.024-1.024-2.56 0-3.584 13.312-14.848 20.48-34.304 20.48-54.272 0-45.056-36.864-81.92-81.92-81.92s-81.92 36.864-81.92 81.92c0 20.992 7.68 40.448 22.016 55.808 1.024 1.024 1.024 2.56 0 3.584 0 0.512-0.512 1.024-1.536 1.024z"
+                              fill="#FFA800" p-id="5782"></path>
+                        <path d="M385.024 479.232c-0.512 0-1.536-0.512-2.048-1.024-25.088-27.136-39.424-62.464-39.424-99.84 0-80.896 65.536-146.432 146.432-146.432s146.432 65.536 146.432 146.432c0 35.84-13.312 70.144-36.864 97.28-1.024 1.024-2.56 1.024-3.584 0-1.024-1.024-1.024-2.56 0-3.584 23.04-26.112 35.84-58.88 35.84-93.696 0-78.336-63.488-141.312-141.312-141.312S349.184 300.544 349.184 378.88c0 35.84 13.312 69.632 37.888 96.256 1.024 1.024 1.024 2.56 0 3.584-1.024 0.512-1.536 0.512-2.048 0.512z"
+                              fill="#FFA800" p-id="5783"></path>
+                    </svg>
                 </div>
-            </li>
-        </ul>
+            </div>
+            <!--begin::User-->
+            <div class="topbar-item">
+                <div class="btn btn-icon btn-circle btn-light-primary" id="kt_quick_user_toggle">
+										<span class="svg-icon svg-icon-lg">
+											<!--begin::Svg Icon | path:/keen/theme/demo4/dist/assets/media/svg/icons/General/User.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg"
+                                                 width="24px" height="24px"
+                                                 viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<polygon points="0 0 24 0 24 24 0 24"/>
+													<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
+                                                          fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+													<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
+                                                          fill="#000000" fill-rule="nonzero"/>
+												</g>
+											</svg>
+                                            <!--end::Svg Icon-->
+										</span>
+                </div>
+            </div>
+            <!--end::User-->
+        </div>
+        <!--end::Topbar-->
     </div>
-</nav>
+    <!--end::Container-->
+</div>
+<!--end::Header-->
