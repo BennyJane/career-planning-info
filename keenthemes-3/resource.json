@@ -1,0 +1,374 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://preview.keenthemes.com/keen/demo4/index.html",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/stock-600x400/img-36.jpg",
+                    "path": "images/img-36.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/stock-600x400/img-17.jpg",
+                    "path": "images/img-17.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/stock-600x400/img-10.jpg",
+                    "path": "images/img-10.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/stock-600x400/img-1.jpg",
+                    "path": "images/img-1.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/stock-600x400/img-34.jpg",
+                    "path": "images/img-34.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-6.jpg",
+                    "path": "images/150-6.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/logos/logo-3.svg",
+                    "path": "images/logo-3.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/logos/logo-4.svg",
+                    "path": "images/logo-4.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/003-puzzle.svg",
+                    "path": "images/003-puzzle.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/005-bebo.svg",
+                    "path": "images/005-bebo.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/014-kickstarter.svg",
+                    "path": "images/014-kickstarter.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/006-plurk.svg",
+                    "path": "images/006-plurk.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/015-telegram.svg",
+                    "path": "images/015-telegram.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-5.jpg",
+                    "path": "images/150-5.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-7.jpg",
+                    "path": "images/150-7.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/svg/misc/007-disqus.svg",
+                    "path": "images/007-disqus.svg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-11.jpg",
+                    "path": "images/150-11.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-9.jpg",
+                    "path": "images/150-9.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/users/150-2.jpg",
+                    "path": "images/150-2.jpeg"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo1.png",
+                    "path": "images/demo1.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo2.png",
+                    "path": "images/demo2.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo3.png",
+                    "path": "images/demo3.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo4.png",
+                    "path": "images/demo4.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo5.png",
+                    "path": "images/demo5.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo6.png",
+                    "path": "images/demo6.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo7.png",
+                    "path": "images/demo7.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo8.png",
+                    "path": "images/demo8.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/demos/demo9.png",
+                    "path": "images/demo9.png"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/plugins.bundle.js?v=2.0.3",
+                    "path": "js/plugins.bundle.js"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/custom/prismjs/prismjs.bundle.js?v=2.0.3",
+                    "path": "js/prismjs.bundle.js"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/js/scripts.bundle.js?v=2.0.3",
+                    "path": "js/scripts.bundle.js"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=2.0.3",
+                    "path": "js/fullcalendar.bundle.js"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/js/pages/widgets.js?v=2.0.3",
+                    "path": "js/widgets.js"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=2.0.3",
+                    "path": "css/fullcalendar.bundle.css"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/plugins.bundle.css?v=2.0.3",
+                    "path": "css/plugins.bundle.css",
+                    "children": [
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/keenthemes-icons/Ki.eot",
+                            "path": "fonts/Ki.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/keenthemes-icons/Ki.woff",
+                            "path": "fonts/Ki.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/keenthemes-icons/Ki.ttf",
+                            "path": "fonts/Ki.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/keenthemes-icons/Ki.svg#Ki",
+                            "path": "images/Ki.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/summernote/summernote.eot",
+                            "path": "fonts/summernote.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/summernote/summernote.woff2",
+                            "path": "fonts/summernote.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/summernote/summernote.woff",
+                            "path": "fonts/summernote.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/summernote/summernote.ttf",
+                            "path": "fonts/summernote.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-brands-400.eot",
+                            "path": "fonts/la-brands-400.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-brands-400.woff2",
+                            "path": "fonts/la-brands-400.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-brands-400.woff",
+                            "path": "fonts/la-brands-400.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-brands-400.ttf",
+                            "path": "fonts/la-brands-400.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-brands-400.svg#lineawesome",
+                            "path": "images/la-brands-400.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-regular-400.eot",
+                            "path": "fonts/la-regular-400.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-regular-400.woff2",
+                            "path": "fonts/la-regular-400.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-regular-400.woff",
+                            "path": "fonts/la-regular-400.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-regular-400.ttf",
+                            "path": "fonts/la-regular-400.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-regular-400.svg#lineawesome",
+                            "path": "images/la-regular-400.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-solid-900.eot",
+                            "path": "fonts/la-solid-900.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-solid-900.woff2",
+                            "path": "fonts/la-solid-900.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-solid-900.woff",
+                            "path": "fonts/la-solid-900.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-solid-900.ttf",
+                            "path": "fonts/la-solid-900.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/line-awesome/la-solid-900.svg#lineawesome",
+                            "path": "images/la-solid-900.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon/Flaticon.eot",
+                            "path": "fonts/Flaticon.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon/Flaticon.woff",
+                            "path": "fonts/Flaticon.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon/Flaticon.ttf",
+                            "path": "fonts/Flaticon.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon/Flaticon.svg#Flaticon",
+                            "path": "images/Flaticon.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.eot",
+                            "path": "fonts/Flaticon2.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.woff",
+                            "path": "fonts/Flaticon2.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.ttf",
+                            "path": "fonts/Flaticon2.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.svg#Flaticon2",
+                            "path": "images/Flaticon2.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/socicon/socicon.eot",
+                            "path": "fonts/socicon.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/socicon/socicon.woff",
+                            "path": "fonts/socicon.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/socicon/socicon.ttf",
+                            "path": "fonts/socicon.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/socicon/socicon.svg#socicon",
+                            "path": "images/socicon.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-brands-400.eot",
+                            "path": "fonts/fa-brands-400.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-brands-400.woff2",
+                            "path": "fonts/fa-brands-400.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-brands-400.woff",
+                            "path": "fonts/fa-brands-400.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-brands-400.ttf",
+                            "path": "fonts/fa-brands-400.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-brands-400.svg#fontawesome",
+                            "path": "images/fa-brands-400.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-regular-400.eot",
+                            "path": "fonts/fa-regular-400.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-regular-400.woff2",
+                            "path": "fonts/fa-regular-400.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-regular-400.woff",
+                            "path": "fonts/fa-regular-400.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-regular-400.ttf",
+                            "path": "fonts/fa-regular-400.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-regular-400.svg#fontawesome",
+                            "path": "images/fa-regular-400.svg"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-solid-900.eot",
+                            "path": "fonts/fa-solid-900.eot"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-solid-900.woff2",
+                            "path": "fonts/fa-solid-900.woff2"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-solid-900.woff",
+                            "path": "fonts/fa-solid-900.woff"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-solid-900.ttf",
+                            "path": "fonts/fa-solid-900.ttf"
+                        },
+                        {
+                            "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/global/fonts/@fortawesome/fa-solid-900.svg#fontawesome",
+                            "path": "images/fa-solid-900.svg"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/plugins/custom/prismjs/prismjs.bundle.css?v=2.0.3",
+                    "path": "css/prismjs.bundle.css"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/css/style.bundle.css?v=2.0.3",
+                    "path": "css/style.bundle.css"
+                },
+                {
+                    "url": "https://preview.keenthemes.com/keen/theme/demo4/dist/assets/media/logos/favicon.ico",
+                    "path": "favicon.ico"
+                }
+            ]
+        }
+    ],
+    "failures": []
+}
