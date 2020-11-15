@@ -5,11 +5,12 @@
 # @File : crawl_data.py
 # @Project : career-planning-info
 import datetime
+import json
 import logging
 import random
 import time
 from pprint import pprint
-import json
+
 import pandas as pd
 from lxml import etree
 from selenium import webdriver
@@ -50,7 +51,7 @@ class Crawl:
 
     def getPageList(self):
         self.startWebDriver()
-        for i in range(4, self.page_total):
+        for i in range(9, self.page_total):
             pageUrl = self.origin_url.format(i)
             # pageUrl = self.origin_url
             try:
