@@ -8,7 +8,8 @@ import json
 
 import pandas as pd
 from pprint import pprint
-from web.crawl.utils import clean_demand
+from web.crawl.utils import strToJson, keyWordMatch, lowerSalary, dealDemand
+from collections import Counter
 
 """
 提供页面展示信息：
@@ -16,14 +17,10 @@ from web.crawl.utils import clean_demand
 """
 
 
-def strToJson(x):
-    demands = x.replace("[", "").replace("]", "").split("\', ")
-    demands = [i.strip("'").strip() for i in demands]
-    return json.dumps(demands, ensure_ascii=False)
-
-
 class ProcessStep1(object):
     saved_path = './cleaned'
+    yearCategory = ['3-5年', '5-10年', '1-3年', '1年以内']
+    salary_limit = [10, 20, 50]
 
     def __init__(self, path="./job_20201108.csv"):
         self.path = path
@@ -36,7 +33,9 @@ class ProcessStep1(object):
     def core(self):
         total_chart = self.totalChart()
         year_chart = self.yearChart()
-        pprint(locals())
+        tag_chart = self.tagCount()
+        demand_chart = self.jobDemand()
+        # pprint(locals())
         return dict(**locals())
 
     def totalChart(self):
@@ -58,10 +57,8 @@ class ProcessStep1(object):
 
     def yearChart(self):
         # yearCategory = self.df['years'].unique().tolist()
-        yearCategory = ['3-5年', '5-10年', '1-3年', '1年以内']
         result = {}
-
-        for year in yearCategory:
+        for year in self.yearCategory:
             result[year] = []
             df = self.df[self.df['years'] == year]
             res = df.to_dict(orient='records')
@@ -77,32 +74,40 @@ class ProcessStep1(object):
                 })
         return result
 
-    def correct(self):
-        self.deal_job_demand()
-        print(self.df['jobDemand'])
-        self.df.to_csv('./job_20201108.csv', index=None)
+    def tagCount(self):
+        allTags = self.df['tags'].tolist()
+        tags = []
+        for item in allTags:
+            for word in json.loads(item):
+                tags.append(keyWordMatch(word))
+        tagCounts = Counter(tags)
+        result = sorted(tagCounts.items(), key=lambda x: x[1], reverse=True)
+        return result
 
-    def deal_job_demand(self):
-        self.df['jobDemand'] = self.df.apply(func=lambda x: strToJson(x['jobDemand']), axis=1)
-        self.df['tags'] = self.df.apply(func=lambda x: strToJson(x['tags']), axis=1)
-
-    def demands_to_csv(self):
-        demand_df = pd.DataFrame(columns=['name', 'years', 'salary', 'demand'])
-        row_num = self.df.shape[0]
-        for index in range(row_num):
-            years = self.df.loc[index, 'years']
-            salary = self.df.loc[index, 'salary']
-            name = self.df.loc[index, 'name']
-            jobDemand = self.df.loc[index, 'jobDemand']
-            demands = json.loads(jobDemand)
-            for demand in demands:
-                cleaned_res = clean_demand(demand)
-                if not cleaned_res:
-                    continue
-                demand_df.loc[demand_df.shape[0] + 1] = [name, years, salary, cleaned_res]
-
-        print(demand_df)
-        demand_df.to_csv('./cleaned/demand_20201108.csv', index=None)
+    def jobDemand(self):
+        result = {
+            "first": [],
+            "second": [],
+            "third": []
+        }
+        df = self.df.loc[:, ['salary', 'site', 'jobDemand']]
+        df['stage'] = df.apply(func=lambda x: lowerSalary(x['salary']), axis=1)
+        for item in df.itertuples():
+            stage = item[-1]
+            jobDemand = dealDemand(item[3])
+            temp = {
+                "salary": item[1],
+                "site": item[2],
+                "demands": jobDemand
+            }
+            if stage <= self.salary_limit[0]:
+                result['first'].append(temp)
+            elif stage <= self.salary_limit[1]:
+                result['second'].append(temp)
+            elif stage <= self.salary_limit[2]:
+                result['third'].append(temp)
+        # pprint(result)
+        return result
 
 
 if __name__ == '__main__':
