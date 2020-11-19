@@ -4,11 +4,11 @@
 # @Email : 暂无
 # @File : __init__.py.py
 # @Project : ProjectStruct-3-simple
-from .index import index_bp
-from .datasource import data_bp
 from .advertise import ad_bp
+from .datasource import data_bp
+from .index import index_bp
 from .material import material_bp
-from ..utils.indexPart import dateInfo
+from ..utils.index import dateInfo
 
 
 def register_bp(app):

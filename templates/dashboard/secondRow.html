@@ -21,16 +21,13 @@
                     <!--end::Image-->
                     <!--begin::Title-->
                     <h3 class="font-size-h4 text-dark-75 text-hover-primary font-weight-bold pt-8">
-                        Python工程师(web|数据处理|可视化)</h3>
+                        {{ targetJob['name'] }}</h3>
                     <!--end::Title-->
                     <!--begin::Text-->
                     <p class="text-dark-75 font-size-lg font-weight-normal pt-3 mb-4">
-                        熟练掌握Python编程；<br>
-                        熟练Pandas数据处理，以及Echarts可视化;<br>
-                        熟练使用Flask框架;<br>
-                        熟悉Parallel Python相关库，熟悉python多核、多进程编程，多进程通信；<br>
-                        熟悉缓存、消息队列、定时任务等相关技术;<br>
-                        熟悉常用的数据结构、算法和设计模式等；<br>
+                        {% for item in targetJob['skills'] %}
+                            {{ item }}<br>
+                        {% endfor %}
                     </p>
                     <!--end::Text-->
                     <!-- 了解更多的按钮 -->

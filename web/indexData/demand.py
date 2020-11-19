@@ -6,10 +6,8 @@ Python(语言类):
 服务器:
 其他:
 
-
-
 """
-fourth_chart = {
+DEMANDS = {
     'first': {
         'Python': [
             '精通Python语言',
