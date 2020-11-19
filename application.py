@@ -12,7 +12,8 @@ from config import config
 from extension import register_ext
 from log import register_logging
 from web.views import register_bp
-from web.utils.indexPart import dateInfo
+
+from web.models import *
 
 # from flask_wtf.csrf import CSRFProtect
 

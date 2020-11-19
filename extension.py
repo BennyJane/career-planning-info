@@ -17,6 +17,7 @@ csrf = CSRFProtect()
 bootstrap = Bootstrap()
 moment = Moment()
 
+
 def register_ext(app):
     db.init_app(app)
     migrate.init_app(app, db)

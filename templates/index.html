@@ -2,23 +2,24 @@
 {% block title %}career-planning{% endblock title %}
 
 {% block content %}
-    <!--end::Header Mobile-->
-    <div class="d-flex flex-column flex-root">
-        <!--begin::Page-->
-        <div class="d-flex flex-row flex-column-fluid page">
-            <!--begin::Wrapper-->
-            <div class="d-flex flex-column flex-row-fluid wrapper container" id="kt_wrapper">
-                {% block nav %}
-                    {% include '_nav.html' %}
-                {% endblock %}
-                {% include 'dashboard/content.html' %}
-            </div>
-        </div>
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="d-flex flex-row flex-column-fluid page">
+      <!--begin::Wrapper-->
+      <div class="d-flex flex-column flex-row-fluid wrapper container" id="kt_wrapper">
+        {% block nav %}
+          {% include '_nav.html' %}
+        {% endblock %}
+        {% block coreBody %}
+          {% include 'dashboard/content.html' %}
+        {% endblock %}
+      </div>
     </div>
-    {% include 'secondary/extra.html' %}
-    {% include 'secondary/scrolltop.html' %}
-    {% include 'secondary/userPlane.html' %}
-    {% include 'secondary/stickyToolbar.html' %}
+  </div>
+  {% include 'secondary/extra.html' %}
+  {% include 'secondary/scrolltop.html' %}
+  {% include 'secondary/userPlane.html' %}
+  {% include 'secondary/stickyToolbar.html' %}
 {% endblock %}
 
 
