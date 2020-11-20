@@ -5,9 +5,9 @@
 # @File : index.py
 # @Project : ProjectStruct-3-simple
 
-from flask import Blueprint, render_template, request
-from ..indexData.fourthChart import fourth_chart
-from ..utils.decorator import statPageView
+from flask import Blueprint, render_template
+
+from web.utils.decorator import statPageView
 
 index_bp = Blueprint('index', __name__)
 
@@ -15,7 +15,12 @@ index_bp = Blueprint('index', __name__)
 @index_bp.route('/')
 @statPageView
 def index():
-    return render_template('index.html', fourthChart=fourth_chart)
+    from web.indexData import TARGET_JOB, DEMANDS, PROJECT_HISTORY
+
+    fourthChart = DEMANDS  # 工作要求，分年限
+    targetJob = TARGET_JOB  # 目标工作
+    projectHistory = reversed(PROJECT_HISTORY)  # 项目更新日志
+    return render_template('index.html', **locals())
 
 
 @index_bp.route('/link')
