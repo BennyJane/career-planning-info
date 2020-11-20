@@ -142,3 +142,5 @@ upload/demo-1/uploads/*
 
 keenthemes-3/*
 autoGit.sh
+
+*.db
