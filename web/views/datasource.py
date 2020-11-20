@@ -16,12 +16,17 @@ def index():
     return render_template('datasource/content.html')
 
 
-@data_bp.route('/download')
+@data_bp.route('/download/origin')
 def download():
     """提供数据下载接口, 用来下载csv文件"""
     # TODO 添加异步任务,提供下载进度条 ==> celery
     # TODO 添加次数记录, 下载IP记录
     NotImplementedError()
+
+
+@data_bp.route('/download/template')
+def downloadTemp():
+    """下载上传数据的ＣＳＶ模板"""
 
 
 @data_bp.route('/download/report')

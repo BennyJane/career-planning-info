@@ -59,7 +59,8 @@ class WarningPara(db.Model):
 class StatBrowse(db.Model):
     """使用mysql的锁机制; 统计网站浏览数据"""
     id = column(db.String(32), primary_key=True)
-    page_views = column(db.BigInteger, default=0)
+    ip = column(db.String(120), default="")
+    # page_views = column(db.BigInteger, default=0)
     origin = column(db.String(120), default="", comment="网站视图函数名称")
     create_at = column(db.DateTime, default=datetime.utcnow)
     update_at = column(db.DateTime, default=datetime.utcnow)
