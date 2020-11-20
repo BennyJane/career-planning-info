@@ -6,8 +6,9 @@
 # @Project : ProjectStruct-3-simple
 
 from flask import Blueprint, render_template
-
+from web.models import StatBrowse
 from web.utils.decorator import statPageView
+from web.common.modelSql import statBrowses
 
 index_bp = Blueprint('index', __name__)
 
@@ -19,6 +20,7 @@ def index():
 
     fourthChart = DEMANDS  # 工作要求，分年限
     targetJob = TARGET_JOB  # 目标工作
+    pageViews = statBrowses()
     projectHistory = reversed(PROJECT_HISTORY)  # 项目更新日志
     return render_template('index.html', **locals())
 

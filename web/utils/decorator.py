@@ -4,7 +4,7 @@ from flask import request
 from functools import wraps
 from web.models import StatBrowse
 from extension import db
-from .commom import produceId
+from .libs import produceId
 
 
 def statPageView(f):

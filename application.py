@@ -12,7 +12,7 @@ from config import config
 from extension import register_ext
 from log import register_logging
 from web.views import register_bp
-
+from web.cli import register_cli
 from web.models import *
 
 # from flask_wtf.csrf import CSRFProtect
@@ -26,6 +26,7 @@ app.config.from_object(config[config_name])
 register_logging(app)
 register_ext(app)
 register_bp(app)
+register_cli(app, db)
 
 
 @app.errorhandler(400)
@@ -41,7 +42,6 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('errors/500.html'), 500
-
 
 
 # @app.errorhandler(CSRFProtect)

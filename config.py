@@ -28,6 +28,8 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
 
+    BROWSE_GAP = 30  # 统计用户浏览量的时间间隔
+
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')
@@ -35,7 +37,9 @@ class DevelopmentConfig(BaseConfig):
     # 添加celery配置
     broker_url = 'redis://localhost:6379'
     result_backend = 'redis://localhost:6379'
-    imports = ('proStruct.services.tasks')
+    imports = ('tasks')
+
+    BROWSE_GAP = 1
 
 
 class TestingConfig(BaseConfig):
@@ -44,6 +48,8 @@ class TestingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data.db')
+
+    pageView_blackIp = ['127.0.0.1']
 
 
 config = {
