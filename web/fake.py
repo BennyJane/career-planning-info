@@ -3,10 +3,11 @@
 # @Author : Benny Jane
 # @Email : 暂无
 # @File : __init__.py.py
+import time
 import random
 from faker import Faker
 from .models import StatBrowse
-from .utils.com import produceId
+from .utils.libs import produceId
 
 fake = Faker()
 
@@ -24,6 +25,7 @@ fake.ip = fake_ip
 
 def faker_browse(db):
     for _ in range(200):
+        time.sleep(0.1)
         browse = StatBrowse(id=produceId(),
                             ip=fake.ip(),
                             origin='index.index',

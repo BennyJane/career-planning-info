@@ -35,7 +35,7 @@ class ProcessStep1(object):
         year_chart = self.yearChart()
         tag_chart = self.tagCount()
         demand_chart = self.jobDemand()
-        # pprint(locals())
+        pprint(tag_chart)
         return dict(**locals())
 
     def totalChart(self):

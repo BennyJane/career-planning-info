@@ -45,13 +45,13 @@ class Crawl:
     def startWebDriver(self):
         # 启动无头浏览器
         options = webdriver.FirefoxOptions()
-        # options.add_argument('-headless')
+        options.add_argument('-headless')
         self.driver = webdriver.Firefox(firefox_options=options)  # Firefox浏览器
         wait = WebDriverWait(self.driver, 3)  # 超时时长为10s
 
     def getPageList(self):
         self.startWebDriver()
-        for i in range(9, self.page_total):
+        for i in range(5, self.page_total):
             pageUrl = self.origin_url.format(i)
             # pageUrl = self.origin_url
             try:
@@ -66,7 +66,7 @@ class Crawl:
                     content_html = self.driver.page_source
                     self.root = etree.HTML(content_html)
                     self.parse(url)
-                    time.sleep(1 + random.random() * 1.2)
+                    time.sleep(10 + random.random() * 1.2)
             except Exception as e:
                 logging.info(e)
             finally:

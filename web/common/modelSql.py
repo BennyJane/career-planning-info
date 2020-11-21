@@ -1,5 +1,5 @@
 import datetime
-from sqlalchemy import func
+
 from web.models import StatBrowse
 from web.utils.libs import getFormatDate
 
@@ -22,4 +22,12 @@ def statBrowses():
             browses[date] = 1
         else:
             browses[date] = browses[date] + 1
-    return dict(total=total, browses=browses)
+    max_pv = max(browses.values()) * 1.2
+    browses_ratio = []
+    for key, value in browses.items():
+        browses_ratio.append({
+            "date": key,
+            "ratio": round(int(value) / max_pv * 100, 1),
+            "count": value,
+        })
+    return dict(total=total, browses=browses_ratio)
