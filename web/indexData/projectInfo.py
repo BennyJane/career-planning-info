@@ -60,6 +60,11 @@ histories = [
         "date": "2020-11-19",
         "info": "处理项目所需数据",
     },
+    {
+        "icon": pencil_icon,
+        "date": "2020-11-21",
+        "info": "初步配置完首页数据",
+    },
 
 ]
 
@@ -74,4 +79,3 @@ end = [
 ]
 
 PROJECT_HISTORY = histories + end
-
