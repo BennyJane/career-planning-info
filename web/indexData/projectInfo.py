@@ -55,7 +55,8 @@ history = namedtuple('his', 'icon date info')
 histories = [
     history(start_icon, "2020-10-28", "项目创建时间"),
     history(pencil_icon, "2020-11-19", "处理项目所需数据"),
-    history(start_icon, "2020-11-21", "初步配置完首页数据"),
+    history(pencil_icon, "2020-11-21", "初步配置完首页数据"),
+    history(pencil_icon, "2020-11-23", "完成表单数据展示"),
 ]
 
 lastInfo = lastUpdate(histories[-1].date)

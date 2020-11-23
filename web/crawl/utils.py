@@ -56,3 +56,8 @@ def dealDemand(data):
             para = para.strip()
             result.append(para)
     return result
+
+
+def joinDemand(data):
+    res = dealDemand(data)
+    return '\n'.join(res)

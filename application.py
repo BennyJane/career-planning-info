@@ -11,9 +11,9 @@ from flask import Flask, render_template
 from config import config
 from extension import register_ext
 from log import register_logging
-from web.views import register_bp
 from web.cli import register_cli
 from web.models import *
+from web.views import register_bp
 
 # from flask_wtf.csrf import CSRFProtect
 
@@ -21,7 +21,7 @@ base_dir = os.path.abspath(os.path.dirname(__file__))
 static_file = os.path.join(base_dir, 'static')
 
 config_name = os.getenv("FLASK_CONFIG", 'development')
-app = Flask(__name__, static_folder=static_file)
+app = Flask(__name__, static_folder=static_file, root_path=base_dir)
 app.config.from_object(config[config_name])
 register_logging(app)
 register_ext(app)

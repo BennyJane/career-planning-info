@@ -1,0 +1,57 @@
+<!--begin::Tables Widget 5 最后一行 -->
+<div class="card card-custom card-shadowless bg-gray-100">
+    <!--begin::Header-->
+    <div class="card-header border-0 pt-7">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label font-weight-bolder font-size-h4 text-dark-75">原始数据</span>
+            <span class="text-muted mt-3 font-weight-bold font-size-sm">只展示部分数据（完整数据可以直接下载）</span>
+        </h3>
+        <div class="card-toolbar">
+            <ul class="nav nav-pills nav-pills-sm nav-dark">
+                <li class="nav-item ml-0">
+                    <a class="nav-link py-2 px-4 active font-weight-bolder font-size-sm"
+                       data-toggle="tab" href="#kt_tab_table_5_1">下载完整CSV数据</a>
+                </li>
+                <li class="nav-item ml-0">
+                    <a class="nav-link py-2 px-4 font-weight-bolder font-size-sm"
+                       data-toggle="tab" href="#kt_tab_table_5_2">下载分析报告</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-0 pb-4">
+        <div class="tab-content mt-2" id="myTabTable5">
+            <!--begin::Tap pane-->
+            <div class="tab-pane fade show active" id="kt_tab_table_5_1" role="tabpanel"
+                 aria-labelledby="kt_tab_table_5_1">
+                <!--begin::Table-->
+                <div class="table-responsive">
+                    <table class="table table-borderless table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="p-0 min-w-100px"></th>
+                            <th class="p-0 min-w-100px"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for row in table_data %}
+                            <tr>
+                                <td class="pl-0">
+                                    <span class="label label-lg label-light-primary label-inline font-size-h5">{{ row['name'] }}</span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!--end::Tablet-->
+            </div>
+            <!--end::Tap pane-->
+        </div>
+    </div>
+    <!--end::Body-->
+</div>
+<!--end::Tables Widget 5-->

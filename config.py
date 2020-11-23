@@ -30,6 +30,8 @@ class BaseConfig(object):
 
     BROWSE_GAP = 30  # 统计用户浏览量的时间间隔
 
+    TABLE_ROWS = 15
+
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')

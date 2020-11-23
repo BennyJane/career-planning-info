@@ -3,9 +3,12 @@
 # @Author : Benny Jane
 # @Email : 暂无
 # @File : index.py
-# @Project : ProjectStruct-3-simple
+import os
 
-from flask import Blueprint, render_template, request
+import pandas as pd
+from flask import Blueprint, render_template, request, current_app
+
+from web.crawl.utils import joinDemand
 
 data_bp = Blueprint('data', __name__)
 
@@ -13,7 +16,18 @@ data_bp = Blueprint('data', __name__)
 @data_bp.route('/')
 def index():
     print(request.blueprint)
-    return render_template('datasource/content.html')
+    config = current_app.config
+    table_rows = config.get('TABLE_ROWS', 10)
+    app_root_path = current_app.root_path
+    # todo 处理系统平台的兼容
+    csv_path = os.path.join(app_root_path, 'web\\crawl\\job_20201108.csv')
+    df = pd.read_csv(csv_path)
+    df.columns = [col.strip() for col in df.columns]
+    df = df.iloc[:table_rows, :]
+    df['jobDemand'] = df.apply(func=lambda x: joinDemand(x['jobDemand']), axis=1)
+    table_data = df.to_dict(orient='records')
+    show_columns = ['name', 'salary', 'site', 'company', 'jobDemand', 'url']
+    return render_template('datasource/content.html', table_data=table_data, show_columns=show_columns)
 
 
 @data_bp.route('/download/origin')
