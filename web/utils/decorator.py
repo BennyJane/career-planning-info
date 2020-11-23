@@ -3,7 +3,7 @@ import datetime
 from flask import request
 from functools import wraps
 from web.models import StatBrowse
-from extension import db
+from web.extension import db
 from .libs import produceId
 
 

@@ -9,10 +9,9 @@ import os
 from flask import Flask, render_template
 
 from config import config
-from extension import register_ext
-from log import register_logging
 from web.cli import register_cli
-from web.models import *
+from web.extension import register_ext, db
+from web.log import register_logging
 from web.views import register_bp
 
 # from flask_wtf.csrf import CSRFProtect

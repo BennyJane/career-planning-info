@@ -6,7 +6,7 @@
 # @Project : ProjectStruct-3-simple
 from datetime import datetime
 
-from extension import db
+from web.extension import db
 
 column = db.Column
 

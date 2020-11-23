@@ -10,7 +10,7 @@ from logging.handlers import RotatingFileHandler, SMTPHandler
 
 from flask import request
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 project_name = os.path.split(os.path.dirname(__file__))[1]
 
 
