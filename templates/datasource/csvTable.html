@@ -31,8 +31,11 @@
                     <table class="table table-borderless table-vertical-center">
                         <thead>
                         <tr>
+                            <th class="p-0 min-w-30px"></th>
+                            <th class="p-0 min-w-150px"></th>
+                            <th class="p-0 min-w-50px"></th>
                             <th class="p-0 min-w-100px"></th>
-                            <th class="p-0 min-w-100px"></th>
+                            <th class="p-0 min-w-200px"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,7 +43,22 @@
                         {% for row in table_data %}
                             <tr>
                                 <td class="pl-0">
-                                    <span class="label label-lg label-light-primary label-inline font-size-h5">{{ row['name'] }}</span>
+                                    <span class="text-dark-75 d-block max-w-100px">
+                                        {{ row[show_columns[0]] }}</span>
+                                </td>
+                                <td class="pl-0">
+                                    <span class="label label-lg label-light-primary label-inline font-size-h5">
+                                        {{ row[show_columns[1]] }}</span>
+                                </td>
+                                <td class="pl-0">
+                                    <span class="text-dark-75 d-block max-w-50px">{{ row[show_columns[2]] }}</span>
+                                </td>
+                                <td class="pl-0">
+                                    <span class="text-dark-75 d-block max-w-100px">{{ row[show_columns[3]] }}</span>
+                                </td>
+                                <td class="pl-0">
+                                    <span class="text-dark-75 d-block text-break">
+                                        {{ row[show_columns[4]] | safe }}</span>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -31,6 +31,7 @@ class BaseConfig(object):
     BROWSE_GAP = 30  # 统计用户浏览量的时间间隔
 
     TABLE_ROWS = 15
+    SHOW_FIELDS = ['name', 'salary', 'site', 'companyName', 'jobDemand']  # 表单显示的字段列表
 
 
 class DevelopmentConfig(BaseConfig):

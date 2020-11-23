@@ -60,4 +60,4 @@ def dealDemand(data):
 
 def joinDemand(data):
     res = dealDemand(data)
-    return '\n'.join(res)
+    return '</br>'.join(res)

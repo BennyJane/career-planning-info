@@ -18,6 +18,7 @@ def index():
     print(request.blueprint)
     config = current_app.config
     table_rows = config.get('TABLE_ROWS', 10)
+    show_columns = config.get('SHOW_FIELDS', ['name', 'salary', 'site', 'companyName', 'jobDemand'])
     app_root_path = current_app.root_path
     # todo 处理系统平台的兼容
     csv_path = os.path.join(app_root_path, 'web\\crawl\\job_20201108.csv')
@@ -26,7 +27,7 @@ def index():
     df = df.iloc[:table_rows, :]
     df['jobDemand'] = df.apply(func=lambda x: joinDemand(x['jobDemand']), axis=1)
     table_data = df.to_dict(orient='records')
-    show_columns = ['name', 'salary', 'site', 'company', 'jobDemand', 'url']
+
     return render_template('datasource/content.html', table_data=table_data, show_columns=show_columns)
 
 
