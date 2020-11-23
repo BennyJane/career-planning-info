@@ -4,6 +4,7 @@
 # @Email : 暂无
 # @File : tags.py
 # @Project : career-planning-info
+from collections import namedtuple
 
 Tag_SRC = [
     # ('python', 75),
@@ -77,49 +78,15 @@ Tag_SRC = [
     ('数据分析', 1),
     ('vue', 1)]
 
+tag = namedtuple('tag', 'name bg icon category count')
+
 TAGS = [
-    {
-        "name": "数据库",
-        "bg": "info",
-        "icon": "1",
-        "category": "mysql/redis/mongodb/postgresql",
-        "count": 32
-    },
-    {
-        "name": "Python的web框架",
-        "bg": "info",
-        "icon": "2",
-        "category": "django/flask/torando",
-        "count": 31
-    },
-    {
-        "name": "服务器",
-        "bg": "primary",
-        "icon": "3",
-        "category": "Linux/shell",
-        "count": 19
-    },
-    {
-        "name": "Python库",
-        "bg": "primary",
-        "icon": "4",
-        "category": "scrapy/pandas/numpy/matplotlib",
-        "count": 5
-    },
-    {
-        "name": "容器技术",
-        "bg": "primary",
-        "icon": "5",
-        "category": "docker/kubernetes",
-        "count": 5
-    },
-    {
-        "name": "其他",
-        "bg": "primary",
-        "icon": "6",
-        "category": "大数据/go/分布式技术/多线程等",
-        "count": ""
-    }
+    tag("数据库", "info", "1", "mysql/redis/mongodb/postgresql", 32),
+    tag("Python的web框架", "info", "2", "django/flask/torando", 31),
+    tag("服务器", "primary", "3", "Linux/shell", 19),
+    tag("Python库", "primary", "4", "scrapy/pandas/numpy/matplotlib", 5),
+    tag("容器技术", "primary", "5", "docker/kubernetes", 5),
+    tag("其他", "primary", "6", "大数据/go/分布式技术/多线程等", ""),
 ]
 
 EXTRAS = [

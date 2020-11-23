@@ -4,6 +4,7 @@
 # @Email : 暂无
 # @File : __init__.py.py
 # @Project : ProjectStruct-3-simple
+from collections import namedtuple
 from web.utils.index import lastUpdate
 
 """
@@ -49,33 +50,18 @@ start_icon = """<svg t="1605789889143" class="icon" viewBox="0 0 1024 1024" vers
 </svg>
 """
 
-histories = [
-    {
-        "icon": start_icon,
-        "date": "2020-10-28",
-        "info": "项目创建时间",
-    },
-    {
-        "icon": pencil_icon,
-        "date": "2020-11-19",
-        "info": "处理项目所需数据",
-    },
-    {
-        "icon": pencil_icon,
-        "date": "2020-11-21",
-        "info": "初步配置完首页数据",
-    },
+history = namedtuple('his', 'icon date info')
 
+histories = [
+    history(start_icon, "2020-10-28", "项目创建时间"),
+    history(pencil_icon, "2020-11-19", "处理项目所需数据"),
+    history(start_icon, "2020-11-21", "初步配置完首页数据"),
 ]
 
-lastInfo = lastUpdate(histories[-1]['date'])
+lastInfo = lastUpdate(histories[-1].date)
 
 end = [
-    {
-        "icon": pencil_icon,
-        "date": lastInfo['date'],
-        "info": lastInfo['info'],
-    }
+    history(pencil_icon, lastInfo['date'], lastInfo['info']),
 ]
 
 PROJECT_HISTORY = histories + end

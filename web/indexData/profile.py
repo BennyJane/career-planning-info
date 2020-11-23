@@ -36,7 +36,7 @@ PROJECTS = [
     },
     {
         "name": "Flask-Demo",
-        "brief": "总结Flask框架使用的各种demo",
+        "brief": "总结Flask框架常用的功能模块",
         "url": "https://github.com/BennyJane/Flask-Demo",
         "icon": ""
     },
