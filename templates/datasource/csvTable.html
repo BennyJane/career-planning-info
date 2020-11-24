@@ -1,75 +1,77 @@
 <!--begin::Tables Widget 5 最后一行 -->
 <div class="card card-custom card-shadowless bg-gray-100">
-  <!--begin::Header-->
-  <div class="card-header border-0 pt-7">
-    <h3 class="card-title align-items-start flex-column">
-      <span class="card-label font-weight-bolder font-size-h4 text-dark-75">原始数据</span>
-      <span class="text-muted mt-3 font-weight-bold font-size-sm">只展示部分数据（完整数据可以直接下载）</span>
-    </h3>
-    <div class="card-toolbar">
-      <ul class="nav nav-pills nav-pills-sm nav-dark">
-        <li class="ml-0">
-          <a class="btn-sm btn-default btn-light-primary font-weight-bold font-size-sm"
-             href="{{ url_for('data.download', file='csv') }}">下载完整CSV数据</a>
-        </li>
-        <li class="ml-5">
-          <a class="btn-sm btn-light-primary font-weight-bold font-size-sm"
-             href="{{ url_for('data.download', file='word') }}">下载分析报告</a>
-        </li>
-      </ul>
+    <!--begin::Header-->
+    <div class="card-header border-0 pt-7">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label font-weight-bolder font-size-h4 text-dark-75">数据展示
+                <span class="text-muted font-weight-bold font-size-h5">(累计下载量{{ downloadSum }})</span>
+            </span>
+            <span class="text-muted mt-3 font-weight-bold font-size-sm">完整数据点击右侧按钮下载</span>
+        </h3>
+        <div class="card-toolbar">
+            <ul class="nav nav-pills nav-pills-sm nav-dark">
+                <li class="ml-0">
+                    <a class="btn-sm btn-default btn-light-primary font-weight-bold font-size-sm"
+                       href="{{ url_for('data.download', file='csv') }}">下载完整CSV数据</a>
+                </li>
+                <li class="ml-5">
+                    <a class="btn-sm btn-light-primary font-weight-bold font-size-sm"
+                       href="{{ url_for('data.download', file='word') }}">下载分析报告</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <!--end::Header-->
-  <!--begin::Body-->
-  <div class="card-body pt-0 pb-4">
-    <div class="tab-content mt-2" id="myTabTable5">
-      <!--begin::Tap pane-->
-      <div class="tab-pane fade show active" id="kt_tab_table_5_1" role="tabpanel"
-           aria-labelledby="kt_tab_table_5_1">
-        <!--begin::Table-->
-        <div class="table-responsive">
-          <table class="table table-borderless table-vertical-center">
-            <thead>
-            <tr>
-              <th class="p-0 min-w-30px"></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-50px"></th>
-              <th class="p-0 min-w-100px"></th>
-              <th class="p-0 min-w-200px"></th>
-            </tr>
-            </thead>
-            <tbody>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-0 pb-4">
+        <div class="tab-content mt-2" id="myTabTable5">
+            <!--begin::Tap pane-->
+            <div class="tab-pane fade show active" id="kt_tab_table_5_1" role="tabpanel"
+                 aria-labelledby="kt_tab_table_5_1">
+                <!--begin::Table-->
+                <div class="table-responsive">
+                    <table class="table table-borderless table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="p-0 min-w-30px"></th>
+                            <th class="p-0 min-w-150px"></th>
+                            <th class="p-0 min-w-50px"></th>
+                            <th class="p-0 min-w-100px"></th>
+                            <th class="p-0 min-w-200px"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-            {% for row in table_data %}
-              <tr>
-                <td class="pl-0">
+                        {% for row in table_data %}
+                            <tr>
+                                <td class="pl-0">
                                     <span class="text-dark-75 d-block max-w-100px">
                                         {{ row[show_columns[0]] }}</span>
-                </td>
-                <td class="pl-0">
+                                </td>
+                                <td class="pl-0">
                                     <span class="label label-lg label-light-primary label-inline font-size-h5">
                                         {{ row[show_columns[1]] }}</span>
-                </td>
-                <td class="pl-0">
-                  <span class="text-dark-75 d-block max-w-50px">{{ row[show_columns[2]] }}</span>
-                </td>
-                <td class="pl-0">
-                  <span class="text-dark-75 d-block max-w-100px">{{ row[show_columns[3]] }}</span>
-                </td>
-                <td class="pl-0">
+                                </td>
+                                <td class="pl-0">
+                                    <span class="text-dark-75 d-block max-w-50px">{{ row[show_columns[2]] }}</span>
+                                </td>
+                                <td class="pl-0">
+                                    <span class="text-dark-75 d-block max-w-100px">{{ row[show_columns[3]] }}</span>
+                                </td>
+                                <td class="pl-0">
                                     <span class="text-dark-75 d-block text-break">
                                         {{ row[show_columns[4]] | safe }}</span>
-                </td>
-              </tr>
-            {% endfor %}
-            </tbody>
-          </table>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!--end::Tablet-->
+            </div>
+            <!--end::Tap pane-->
         </div>
-        <!--end::Tablet-->
-      </div>
-      <!--end::Tap pane-->
     </div>
-  </div>
-  <!--end::Body-->
+    <!--end::Body-->
 </div>
 <!--end::Tables Widget 5-->

@@ -5,10 +5,10 @@
 # @File : index.py
 # @Project : ProjectStruct-3-simple
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, url_for, redirect
 
-from web.common.modelSql import statBrowses
 from web.utils.decorator import statPageView
+from web.utils.modelSql import statBrowses, statInfoAction, statSum, isLike
 
 index_bp = Blueprint('index', __name__)
 
@@ -23,6 +23,8 @@ def index():
     webData = WEB_DATA  # 第二行
     tags = TAGS  # 第三行
     extras = EXTRAS  # 第三行
+    likeSum = statSum(action='like')
+    likeStatus = isLike(request.remote_addr)
     targetJob = TARGET_JOB  # 目标工作
     pageViews = statBrowses()
     projectHistory = reversed(PROJECT_HISTORY)  # 项目更新日志
@@ -30,8 +32,12 @@ def index():
 
 
 @index_bp.route('/link')
-def link():
+def like():
     """用户点赞"""
+    ip = request.remote_addr
+    statInfoAction(ip=ip, action='like')
+    target_url = url_for('.index') + '#third_row_id'
+    return redirect(target_url)
 
 
 @index_bp.route('/share')

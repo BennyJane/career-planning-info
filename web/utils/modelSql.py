@@ -1,8 +1,10 @@
 import datetime
 
+from sqlalchemy import func, and_
+
+from web.extension import db
 from web.models import StatBrowse, StatInfo
 from web.utils.libs import getFormatDate, produceId
-from web.extension import db
 
 """
 from sqlalchemy import func
@@ -36,7 +38,7 @@ def statBrowses():
 
 def statInfoAction(ip, action='like'):
     # 两种行为的初始化操作一致
-    isExist = StatInfo.query.filter(StatInfo.ip == ip).first()
+    isExist = StatInfo.query.filter(StatInfo.ip == ip).filter(StatInfo.action == action).first()
     if not isExist:
         info = StatInfo(id=produceId(), ip=ip, action=action, count=1)
         db.session.add(info)
@@ -48,3 +50,17 @@ def statInfoAction(ip, action='like'):
         elif action == 'download':
             isExist.count += 1  # 不需要add
             db.session.commit()
+
+
+def statSum(action='download'):
+    """统计点赞或者下载量"""
+    if action == 'like':
+        return StatInfo.query.filter(and_(StatInfo.action == action, StatInfo.count == 1)).count()
+    return db.session.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).first()[0]
+    # return StatInfo.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).group_by(StatInfo.action).first()
+
+
+def isLike(ip):
+    """判断当前IP是否已经点赞"""
+    isExist = StatInfo.query.filter(and_(StatInfo.ip == ip, StatInfo.action == 'like', StatInfo.count == 1)).first()
+    return True if isExist is not None else False

@@ -10,6 +10,7 @@ dbUp (){
 }
 
 dbInit (){
+    `source ./env/Scripts/activate`
   `flask db init`
   `flask db migrate`
   `flask db upgrade`

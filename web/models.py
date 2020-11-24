@@ -48,6 +48,7 @@ class StatInfo(db.Model):
     update_at = column(db.DateTime, default=datetime.utcnow)
 
 
+
 class WarningPara(db.Model):
     __tablename__ = 'warning_para'
     id = column(db.String(32), primary_key=True)
