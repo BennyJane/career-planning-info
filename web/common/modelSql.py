@@ -1,7 +1,8 @@
 import datetime
 
-from web.models import StatBrowse
-from web.utils.libs import getFormatDate
+from web.models import StatBrowse, StatInfo
+from web.utils.libs import getFormatDate, produceId
+from web.extension import db
 
 """
 from sqlalchemy import func
@@ -31,3 +32,19 @@ def statBrowses():
             "count": value,
         })
     return dict(total=total, browses=browses_ratio)
+
+
+def statInfoAction(ip, action='like'):
+    # 两种行为的初始化操作一致
+    isExist = StatInfo.query.filter(StatInfo.ip == ip).first()
+    if not isExist:
+        info = StatInfo(id=produceId(), ip=ip, action=action, count=1)
+        db.session.add(info)
+        db.session.commit()
+    else:
+        if action == 'like':
+            isExist.count = 0 if isExist.count == 1 else 1  # 不需要add
+            db.session.commit()
+        elif action == 'download':
+            isExist.count += 1  # 不需要add
+            db.session.commit()

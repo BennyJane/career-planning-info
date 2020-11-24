@@ -42,8 +42,8 @@ class StatInfo(db.Model):
     __tablename__ = 'stat_info'
     id = column(db.String(32), primary_key=True)
     ip = column(db.String(120), default="")
-    link = column(db.Boolean, default=False)  # 同一个IP在一定时间内,只允许贡献一个赞
-    download = column(db.Boolean, default=False)  # 允许无限下载
+    action = column(db.String(32), default='', comment="访客行为: like-点赞, download-下载")
+    count = column(db.INTEGER, default=0, comment="统计单个IP下载次数")  # 允许无限下载
     create_at = column(db.DateTime, default=datetime.utcnow)
     update_at = column(db.DateTime, default=datetime.utcnow)
 
