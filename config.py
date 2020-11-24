@@ -3,16 +3,14 @@
 # @Author : Benny Jane
 # @Email : 暂无
 # @File : app.py
-# @Project : ProjectStruct-3-simple
-
 import os
 import sys
+from _compat import win, modifyPath
 
 # 考虑直接使用app的root_path 路径
 baseDir = os.path.abspath(os.path.dirname(__file__))
 
-WIN = sys.platform.startswith('win')
-if WIN:
+if win:
     prefix = 'sqlite:///'
 else:
     prefix = 'sqlite:////'
@@ -32,6 +30,9 @@ class BaseConfig(object):
 
     TABLE_ROWS = 15
     SHOW_FIELDS = ['name', 'salary', 'site', 'companyName', 'jobDemand']  # 表单显示的字段列表
+
+    CSV_PATH = modifyPath('web/crawl/job_20201108.csv')
+    WORD_PATH = modifyPath('web/crawl/job_20201108.csv')
 
 
 class DevelopmentConfig(BaseConfig):

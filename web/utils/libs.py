@@ -2,6 +2,7 @@ import os
 import time
 import datetime
 import hashlib
+from _compat import win
 
 
 def produceId():

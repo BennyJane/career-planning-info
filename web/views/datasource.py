@@ -6,7 +6,7 @@
 import os
 
 import pandas as pd
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, send_from_directory, flash
 
 from web.crawl.utils import joinDemand
 
@@ -15,14 +15,15 @@ data_bp = Blueprint('data', __name__)
 
 @data_bp.route('/')
 def index():
-    print(request.blueprint)
     config = current_app.config
     table_rows = config.get('TABLE_ROWS', 10)
+    csv_path = config['CSV_PATH']
     show_columns = config.get('SHOW_FIELDS', ['name', 'salary', 'site', 'companyName', 'jobDemand'])
+
     app_root_path = current_app.root_path
-    # todo 处理系统平台的兼容
-    csv_path = os.path.join(app_root_path, 'web\\crawl\\job_20201108.csv')
-    df = pd.read_csv(csv_path)
+    target_file_path = os.path.join(app_root_path, csv_path)  # 兼容win linux 平台
+
+    df = pd.read_csv(target_file_path)
     df.columns = [col.strip() for col in df.columns]
     df = df.iloc[:table_rows, :]
     df['jobDemand'] = df.apply(func=lambda x: joinDemand(x['jobDemand']), axis=1)
@@ -31,22 +32,24 @@ def index():
     return render_template('datasource/content.html', table_data=table_data, show_columns=show_columns)
 
 
-@data_bp.route('/download/origin')
-def download():
+@data_bp.route('/download/origin/<string:file>')
+def download(file):
     """提供数据下载接口, 用来下载csv文件"""
     # TODO 添加异步任务,提供下载进度条 ==> celery
     # TODO 添加次数记录, 下载IP记录
-    NotImplementedError()
+    app_root_path = current_app.root_path
+    file_path = current_app.config[f'{file.upper()}_PATH']
+    if file_path:
+        target_file_path = os.path.join(app_root_path, file_path)  # 兼容win linux 平台
+        filePath, filename = os.path.split(target_file_path)
+        if os.path.isfile(target_file_path):
+            return send_from_directory(filePath, filename, as_attachment=True)
+    flash("文件不存在~")
 
 
 @data_bp.route('/download/template')
 def downloadTemp():
     """下载上传数据的ＣＳＶ模板"""
-
-
-@data_bp.route('/download/report')
-def JobReport():
-    """提供数据分析报告"""
 
 
 @data_bp.route('/upload')
