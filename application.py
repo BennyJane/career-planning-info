@@ -22,6 +22,9 @@ static_file = os.path.join(base_dir, 'static')
 config_name = os.getenv("FLASK_CONFIG", 'development')
 app = Flask(__name__, static_folder=static_file, root_path=base_dir)
 app.config.from_object(config[config_name])
+HOST = app.config.get('HOST')
+PORT = app.config.get('PORT')
+
 register_logging(app)
 register_ext(app)
 register_bp(app)
@@ -49,4 +52,4 @@ def internal_server_error(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=HOST, port=PORT)

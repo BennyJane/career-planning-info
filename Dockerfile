@@ -9,5 +9,8 @@ RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.
 
 COPY . .
 EXPOSE 8010 22 80
-
-CMD ["flask", "run", "-p" , "8010"]
+# 需要设置host为 0.0.0.0
+# 通过-p设置端口映射: 外部端口:内部端口；外部访问端口可以不用和内部一致
+# 运行: docker run -it -p 8001:8010 image:v
+# docker run -d -p 8010:8010 image:v
+CMD ["flask", "run", "-p" , "8010", "-h", "0.0.0.0"]

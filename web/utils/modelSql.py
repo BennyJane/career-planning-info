@@ -56,7 +56,8 @@ def statSum(action='download'):
     """统计点赞或者下载量"""
     if action == 'like':
         return StatInfo.query.filter(and_(StatInfo.action == action, StatInfo.count == 1)).count()
-    return db.session.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).first()[0]
+    downloads = db.session.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).first()[0]
+    return downloads if downloads is not None else 0
     # return StatInfo.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).group_by(StatInfo.action).first()
 
 
