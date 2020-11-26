@@ -17,7 +17,9 @@ else:
 
 
 class BaseConfig(object):
-    PROJECT_NAME = 'blogDog'
+    PROJECT_NAME = "career-plane"
+    HOST = "0.0.0.0"
+    PORT = 8010
 
     SECRET_KEY = os.getenv("SECRET_KEY", 'dey key')
     IS_DEBUG = True
