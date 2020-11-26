@@ -5,17 +5,17 @@
 # @File : index.py
 # @Project : ProjectStruct-3-simple
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template
 
-ad_bp = Blueprint('ad', __name__)
+message_bp = Blueprint('messages', __name__)
 
 
-@ad_bp.route('/')
+@message_bp.route('/')
 def index():
-    return render_template('datasource/content.html')
+    return render_template('messages/content.html')
 
 
-@ad_bp.route('/list')
+@message_bp.route('/list')
 def download():
     """添加招聘信息"""
     # TODO 开放招聘信息展示页面,允许外部人员添加招聘信息

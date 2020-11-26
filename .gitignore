@@ -141,6 +141,6 @@ upload/demo-1/uploads/*
 *.xml
 
 keenthemes-3/*
-autoGit.sh
+gitHelp.sh
 
 *.db

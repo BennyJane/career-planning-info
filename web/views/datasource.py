@@ -8,8 +8,8 @@ import os
 import pandas as pd
 from flask import Blueprint, render_template, request, current_app, send_from_directory, flash
 
-from web.utils.modelSql import statInfoAction, statSum
 from web.crawl.utils import joinDemand
+from web.utils.modelSql import statInfoAction, statSum
 
 data_bp = Blueprint('data', __name__)
 
@@ -30,9 +30,9 @@ def index():
     df['jobDemand'] = df.apply(func=lambda x: joinDemand(x['jobDemand']), axis=1)
     table_data = df.to_dict(orient='records')
 
-    downloadSum = statSum(action='download')
+    downloads = statSum(action='download')
     return render_template('datasource/content.html', table_data=table_data,
-                           downloadSum=downloadSum, show_columns=show_columns)
+                           downloads=downloads, show_columns=show_columns)
 
 
 @data_bp.route('/download/origin/<string:file>')

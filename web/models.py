@@ -29,13 +29,12 @@ class JobInfo(db.Model):
     update_at = column(db.DateTime, default=datetime.utcnow)
 
 
-# 将原始信息拆分为单条工作要求来展示
-class Point(db.Model):
+class WarningPara(db.Model):
+    __tablename__ = 'warning_para'
     id = column(db.String(32), primary_key=True)
-    salary = column(db.Integer, default=0)
-    site = column(db.String(32), default="")
-    year = column(db.String(32), default="")
-    requirement = column(db.Text, default="")
+    para = column(db.Text, default="")
+    create_at = column(db.DateTime, default=datetime.utcnow)
+    update_at = column(db.DateTime, default=datetime.utcnow)
 
 
 class StatInfo(db.Model):
@@ -47,14 +46,7 @@ class StatInfo(db.Model):
     create_at = column(db.DateTime, default=datetime.utcnow)
     update_at = column(db.DateTime, default=datetime.utcnow)
 
-
-
-class WarningPara(db.Model):
-    __tablename__ = 'warning_para'
-    id = column(db.String(32), primary_key=True)
-    para = column(db.Text, default="")
-    create_at = column(db.DateTime, default=datetime.utcnow)
-    update_at = column(db.DateTime, default=datetime.utcnow)
+    __mapper_args__ = {'order_by': [create_at.desc()]}
 
 
 class StatBrowse(db.Model):
@@ -65,3 +57,5 @@ class StatBrowse(db.Model):
     origin = column(db.String(120), default="", comment="网站视图函数名称")
     create_at = column(db.DateTime, default=datetime.utcnow)
     update_at = column(db.DateTime, default=datetime.utcnow)
+
+    __mapper_args__ = {'order_by': [create_at.desc()]}
