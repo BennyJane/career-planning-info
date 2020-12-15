@@ -4,7 +4,6 @@
 # @Email : 暂无
 # @File : __init__.py.py
 # @Project : ProjectStruct-3-simple
-import click
 
 
 def register_cli(app, db):

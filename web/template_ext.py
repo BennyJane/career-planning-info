@@ -5,6 +5,7 @@
 # Warning    ：The Hard Way Is Easier
 from web.utils.common import UrlManager
 from web.utils.libs import random_string
+from web.indexData import AUTHOR
 
 
 def register_template_ext(app):
@@ -18,3 +19,4 @@ def register_template_ext(app):
     app.add_template_global(UrlManager.buildUrl, "buildUrl")
     app.add_template_global(UrlManager.buildStaticUrl, "buildStaticUrl")
     app.add_template_global(random_string, name="random_string")
+    app.add_template_global(AUTHOR, name="author")

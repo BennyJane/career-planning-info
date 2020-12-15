@@ -1,14 +1,18 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/10/28
-# @Author : Benny Jane
-# @Email : 暂无
-# @File : index.py
-# @Project : ProjectStruct-3-simple
+# !/usr/bin/env python
+# -*-coding:utf-8 -*-
+# PROJECT    : career-planning-info
+# Time       ：2020/12/15 21:51
+# Warning    ：The Hard Way Is Easier
 from flask import jsonify
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import request
+from flask import Blueprint
+from flask import render_template
 
+from web.utils.modelSql import isLike
+from web.utils.modelSql import statSum
+from web.utils.modelSql import statBrowses
 from web.utils.decorator import statPageView
-from web.utils.modelSql import statBrowses, statInfoAction, statSum, isLike
+from web.utils.modelSql import statInfoAction
 
 index_bp = Blueprint('index', __name__)
 
@@ -16,7 +20,8 @@ index_bp = Blueprint('index', __name__)
 @index_bp.route('/')
 @statPageView
 def index():
-    from web.indexData import TARGET_JOB, DEMANDS, PROJECT_HISTORY, TAGS, EXTRAS, WEB_DATA, JOBS_INFO
+    from web.indexData import TARGET_JOB, DEMANDS, PROJECT_HISTORY, \
+        TAGS, EXTRAS, WEB_DATA, JOBS_INFO
 
     fourthChart = DEMANDS  # 工作要求，分年限
     jobInfo = JOBS_INFO  # 第一行

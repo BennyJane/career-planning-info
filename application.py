@@ -5,15 +5,13 @@
 # @File : app.py
 # @Project : ProjectStruct-3-simple
 import os
-
 from flask import Flask
-from flask import render_template
-
 from config import config
+from web.extension import db
 from web.cli import register_cli
-from web.extension import register_ext, db
-from web.log import register_logging
 from web.views import register_bp
+from web.log import register_logging
+from web.extension import register_ext
 from web.template_ext import register_template_ext
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -30,11 +28,6 @@ register_ext(app)
 register_bp(app)
 register_cli(app, db)
 register_template_ext(app)
-
-
-
-
-
 
 # @app.errorhandler(CSRFProtect)
 # def handle_csrf_error(e):

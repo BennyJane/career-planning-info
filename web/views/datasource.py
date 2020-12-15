@@ -1,12 +1,16 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/10/28
-# @Author : Benny Jane
-# @Email : 暂无
-# @File : index.py
+# !/usr/bin/env python
+# -*-coding:utf-8 -*-
+# PROJECT    : career-planning-info
+# Time       ：2020/12/15 21:51
+# Warning    ：The Hard Way Is Easier
 import os
 
 import pandas as pd
-from flask import Blueprint, render_template, request, current_app, send_from_directory, flash
+from flask import request
+from flask import Blueprint
+from flask import current_app
+from flask import render_template
+from flask import send_from_directory
 
 from web.crawl.utils import joinDemand
 from web.utils.modelSql import statInfoAction, statSum

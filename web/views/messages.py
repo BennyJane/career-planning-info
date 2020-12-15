@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/10/28
-# @Author : Benny Jane
-# @Email : 暂无
-# @File : index.py
-# @Project : ProjectStruct-3-simple
+# !/usr/bin/env python
+# -*-coding:utf-8 -*-
+# PROJECT    : career-planning-info
+# Time       ：2020/12/15 21:51
+# Warning    ：The Hard Way Is Easier
 
 from flask import Blueprint, render_template
 

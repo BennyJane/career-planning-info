@@ -7,6 +7,7 @@ from flask import render_template
 
 
 def register_errors(app):
+    # 直接调用装饰方法
     app.errorhandler(400)(bad_request)
     app.errorhandler(404)(page_not_found)
     app.errorhandler(500)(internal_server_error)

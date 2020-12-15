@@ -1,10 +1,12 @@
 import datetime
-
-from sqlalchemy import func, and_
+from sqlalchemy import func
+from sqlalchemy import and_
 
 from web.extension import db
-from web.models import StatBrowse, StatInfo
-from web.utils.libs import getFormatDate, produceId
+from web.models import StatInfo
+from web.models import StatBrowse
+from web.utils.libs import produceId
+from web.utils.libs import getFormatDate
 
 """
 from sqlalchemy import func

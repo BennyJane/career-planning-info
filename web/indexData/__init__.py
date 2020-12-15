@@ -4,12 +4,15 @@
 # @Email : 暂无
 # @File : __init__.py.py
 
-from web.indexData.demand import DEMANDS
+from web.indexData.tags import TAGS
+from web.indexData.tags import EXTRAS
 from web.indexData.jobs import JOBS_INFO
-from web.indexData.profile import PROJECTS, TARGET_JOB
-from web.indexData.projectInfo import PROJECT_HISTORY
-from web.indexData.tags import TAGS, EXTRAS
+from web.indexData.demand import DEMANDS
+from web.indexData.profile import AUTHOR
+from web.indexData.profile import PROJECTS
+from web.indexData.profile import TARGET_JOB
 from web.indexData.learnFiles import WEB_DATA
+from web.indexData.projectInfo import PROJECT_HISTORY
 
-__all__ = (PROJECT_HISTORY, TARGET_JOB, DEMANDS,
+__all__ = (PROJECT_HISTORY, AUTHOR, TARGET_JOB, DEMANDS,
            TAGS, EXTRAS, WEB_DATA, JOBS_INFO)

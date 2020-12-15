@@ -4,12 +4,11 @@
 # @Email : 暂无
 # @File : app.py
 # @Project : ProjectStruct-3-simple
-
-from flask_bootstrap import Bootstrap
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import CSRFProtect
 from flask_moment import Moment
+from flask_migrate import Migrate
+from flask_wtf import CSRFProtect
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 migrate = Migrate()
