@@ -6,29 +6,81 @@
 from datetime import datetime
 from web.extension import db
 from web.models import Column
-from web.models import BaseMixin
+from web.models import TimeMixin
+from web.constant import ROLE_INFO
+from web.utils.libs import produceId
 
 
-# 抓取的原始数据
-class JobInfo(db.Model, BaseMixin):
-    __tablename__ = 'job_info'
+class User(db.Model, TimeMixin):
+    __tablename__ = 'user'
     id = Column(db.String(32), primary_key=True)
-    name = Column(db.String(128), nullable=False)
-    salary = Column(db.Integer, nullable=False, default=0)
-    year = Column(db.String(32), nullable=False, default="")
-    site = Column(db.String(32), nullable=False, default="")
-    responsibility = Column(db.Text, nullable=False, default="")
-    demand = Column(db.Text, nullable=False, default="")
-    other = Column(db.Text, nullable=False, default="")
-    source = Column(db.Text, nullable=False, default="")
-    source_id = Column(db.String(32), nullable=False, default="")
-    source_url = Column(db.Text, nullable=False, default="")
+    username = Column(db.String(32))
+    email = Column(db.String(64), default="", comment="留言者的邮箱")
+    avatar = Column(db.Text, default="", comment="base64格式存储的用户头像")
+    is_admin = Column(db.Boolean, default=False, comment="是否是网站的管理者")
+
+    messages = db.relationship("Message", back_populates='user')
+
+    def __init__(self, *args, **kwargs):
+        if "id" not in args and "id" not in kwargs:
+            _id = produceId()
+            kwargs["id"] = _id
+        super().__init__(*args, **kwargs)
+
+    @staticmethod
+    def insert_data():
+        """添加默认信息"""
+        for role in ROLE_INFO:
+            user = User.query.filter(User.email == role.email).first()
+            if user is None:
+                user.username = role.name
+                user.email = role.email
+                user.avatar = role.avatar
+                user.is_admin = role.role
+            else:
+                user = User(username=role.name, email=role.email, avatar=role.avatar, is_admin=role.role)
+            db.session.add(user)
+        db.session.commit()
 
 
-class WarningPara(db.Model, BaseMixin):
+class Message(db.Model, TimeMixin):
+    __tablename__ = 'message'
+    id = Column(db.String(32), primary_key=True)
+    body = Column(db.Text, comment="留言内容")
+    reviewed = Column(db.Boolean, default=False, comment="是否已经被审核")
+
+    user_id = Column(db.String(32), db.ForeignKey("user.id"))
+    user = db.relationship("User", back_populates='messages')
+
+    def __init__(self, *args, **kwargs):
+        if "id" not in args and "id" not in kwargs:
+            _id = produceId()
+            kwargs["id"] = _id
+        super().__init__(*args, **kwargs)
+
+    def msg_params(self):
+        meg_info = {
+            "id": self.id,
+            "name": self.user.username,
+            "email": self.user.email,
+            "avatar": self.user.avatar,
+            "body": self.body,
+            "reviewed": self.reviewed,
+            "from_admin": self.user.is_admin  # 是否为网站维护者
+        }
+        return meg_info
+
+
+class WarningPara(db.Model, TimeMixin):
     __tablename__ = 'warning_para'
     id = Column(db.String(32), primary_key=True)
     para = Column(db.Text, default="")
+
+    def __init__(self, *args, **kwargs):
+        if "id" not in args and "id" not in kwargs:
+            _id = produceId()
+            kwargs["id"] = _id
+        super().__init__(*args, **kwargs)
 
 
 class StatInfo(db.Model):
@@ -42,6 +94,12 @@ class StatInfo(db.Model):
 
     __mapper_args__ = {'order_by': [create_at.desc()]}
 
+    def __init__(self, *args, **kwargs):
+        if "id" not in args and "id" not in kwargs:
+            _id = produceId()
+            kwargs["id"] = _id
+        super().__init__(*args, **kwargs)
+
 
 class StatBrowse(db.Model):
     """使用mysql的锁机制; 统计网站浏览数据"""
@@ -54,8 +112,8 @@ class StatBrowse(db.Model):
 
     __mapper_args__ = {'order_by': [create_at.desc()]}
 
-
-class Comment(db.Model, BaseMixin):
-    id = Column(db.String(32), primary_key=True)
-    author = db.Column(db.String(32))
-    email = db.Column(db.String(254))
+    def __init__(self, *args, **kwargs):
+        if "id" not in args and "id" not in kwargs:
+            _id = produceId()
+            kwargs["id"] = _id
+        super().__init__(*args, **kwargs)

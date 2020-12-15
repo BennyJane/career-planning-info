@@ -9,7 +9,7 @@ from web.extension import db
 Column = db.Column
 
 
-class BaseMixin(object):  # 参考superset项目
+class TimeMixin(object):  # 参考superset项目
     # TODO datetime.utctime 时间不是北京时间
     create_at = Column(db.DateTime, default=datetime.now)
     update_at = Column(db.DateTime, default=datetime.now)
@@ -23,7 +23,8 @@ class BaseMixin(object):  # 参考superset项目
         return self.create_at.strftime(formatter)
 
 
+from .model import User
+from .model import Message
 from .model import StatInfo
-from .model import JobInfo
-from .model import Comment
 from .model import StatBrowse
+from .model import WarningPara

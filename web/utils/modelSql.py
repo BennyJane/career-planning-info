@@ -1,10 +1,19 @@
+# !/usr/bin/env python
+# -*-coding:utf-8 -*-
+# PROJECT    : career-planning-info
+# Time       ：2020/12/15 21:51
+# Warning    ：The Hard Way Is Easier
+import random
 import datetime
 from sqlalchemy import func
 from sqlalchemy import and_
 
 from web.extension import db
+from web.models import User
+from web.models import Message
 from web.models import StatInfo
 from web.models import StatBrowse
+from web.constant import USER_NAME
 from web.utils.libs import produceId
 from web.utils.libs import getFormatDate
 
@@ -62,10 +71,37 @@ def statSum(action='download'):
         return StatInfo.query.filter(and_(StatInfo.action == action, StatInfo.count == 1)).count()
     downloads = db.session.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).first()[0]
     return downloads if downloads is not None else 0
-    # return StatInfo.query(func.sum(StatInfo.count)).filter(StatInfo.action == action).group_by(StatInfo.action).first()
 
 
 def isLike(ip):
     """判断当前IP是否已经点赞"""
     isExist = StatInfo.query.filter(and_(StatInfo.ip == ip, StatInfo.action == 'like', StatInfo.count == 1)).first()
     return 'true' if isExist is not None else 'false'
+
+
+"""
+========================================================================================================================
+留言界面得sql
+========================================================================================================================
+"""
+
+
+def msgList():
+    res = []
+    msgs = Message.query.all()
+    for msg in msgs:
+        res.append(msg.meg_info)
+    return res
+
+
+def addMsg(params, user=None):
+    if user is None:
+        user = User(username=random.choice(USER_NAME))
+    msg = Message(**params, user_id=user.id)
+    db.session.add_all([user, msg])
+    db.session.commit()
+
+
+def getUser(email):
+    user = User.query.filter(User.email == email).first()
+    return user
