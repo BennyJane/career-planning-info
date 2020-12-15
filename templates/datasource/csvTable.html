@@ -12,11 +12,11 @@
             <ul class="nav nav-pills nav-pills-sm nav-dark">
                 <li class="ml-0">
                     <a class="btn-sm btn-default btn-light-primary font-weight-bold font-size-sm"
-                       href="{{ url_for('data.download', file='csv') }}">下载完整CSV数据</a>
+                       href="{{ url_for('data.download', file='csv', sign=random_string(6)) }}">下载完整CSV数据</a>
                 </li>
                 <li class="ml-5">
                     <a class="btn-sm btn-light-primary font-weight-bold font-size-sm"
-                       href="{{ url_for('data.download', file='word') }}">下载分析报告</a>
+                       href="{{ url_for('data.download', file='word',sign=random_string(6)) }}">下载分析报告</a>
                 </li>
             </ul>
         </div>

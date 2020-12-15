@@ -29,7 +29,8 @@ GITHUB = [
              "https://github.com/apache/incubator-superset"),
     git_info("incubator-echarts", "开源可视化框架，<a href='echarts.apache.org/'>echarts官网连接</a>", "TypeScript, JavaScript",
              "https://github.com/apache/incubator-echarts"),
-    git_info("", "", "", ""),
+    git_info("crawlab: 爬虫管理平台", "0.24版本之前使用python作为后端语言，后期改为go语言，前端使用VUE", "python go vue",
+             "https://github.com/crawlab-team/crawlab"),
 ]
 WEB_DATA = {
     "python": sorted(PY, key=lambda x: x.recommend, reverse=True),

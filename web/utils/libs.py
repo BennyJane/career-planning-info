@@ -1,8 +1,8 @@
 import os
 import time
-import datetime
+import random
 import hashlib
-from _compat import win
+import datetime
 
 
 def produceId():
@@ -17,3 +17,8 @@ def getFormatDate(date=None, _format="%Y-%m-%d %H:%M:%S"):
     if date is None:
         date = datetime.datetime.now()
     return date.strftime(_format)
+
+
+def random_string(length):
+    text = ''.join([str(random.randint(0, 9)) for _ in range(length)])
+    return text

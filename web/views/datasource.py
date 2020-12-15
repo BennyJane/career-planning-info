@@ -35,8 +35,8 @@ def index():
                            downloads=downloads, show_columns=show_columns)
 
 
-@data_bp.route('/download/origin/<string:file>')
-def download(file):
+@data_bp.route('/download/origin/<string:file>/<string:sign>')  # 连续点击，会因为访问接口相同，被浏览器缓存，而不会触发该下载接口
+def download(file, sign: str = ""):
     """提供数据下载接口, 用来下载csv文件"""
     # TODO 添加异步任务,提供下载进度条 ==> celery
     # TODO 添加次数记录, 下载IP记录
@@ -50,7 +50,7 @@ def download(file):
             ip = request.remote_addr
             statInfoAction(ip, action='download')
             return send_from_directory(filePath, filename, as_attachment=True)
-    flash("文件不存在~")
+    raise Exception("文件不存在")
 
 
 @data_bp.route('/download/template')

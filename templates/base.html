@@ -2,16 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&amp;l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');</script>
-    <!-- End Google Tag Manager -->
     {% block head %}
         <meta charset="utf-f">
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -19,7 +9,7 @@
         <title>{% block title %} {% endblock title %} - Benny Jane</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
         <link rel="stylesheet"
-              href="{{ url_for('static', filename='css/style.css') }}"
+              href="{{ url_for('static', filename='css/style.bundle.css') }}"
               type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/prismjs.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/plugins.css') }}" type="text/css">
@@ -134,7 +124,6 @@
     };</script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- 引入UI框架需要的文件-->
@@ -143,6 +132,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/widgets.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/fullcalendar.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='ajax_api/script.js') }}"></script>
     {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
 {% endblock %}
 </body>

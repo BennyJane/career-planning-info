@@ -6,15 +6,15 @@
 # @Project : ProjectStruct-3-simple
 import os
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
 
 from config import config
 from web.cli import register_cli
 from web.extension import register_ext, db
 from web.log import register_logging
 from web.views import register_bp
-
-# from flask_wtf.csrf import CSRFProtect
+from web.template_ext import register_template_ext
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 static_file = os.path.join(base_dir, 'static')
@@ -29,21 +29,11 @@ register_logging(app)
 register_ext(app)
 register_bp(app)
 register_cli(app, db)
+register_template_ext(app)
 
 
-@app.errorhandler(400)
-def bad_request(e):
-    return render_template('errors/400.html'), 400
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('errors/404.html'), 404
-
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    return render_template('errors/500.html'), 500
 
 
 # @app.errorhandler(CSRFProtect)

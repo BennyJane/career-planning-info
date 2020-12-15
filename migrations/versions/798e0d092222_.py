@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f50395775af8
+Revision ID: 798e0d092222
 Revises: 
-Create Date: 2020-11-25 10:31:59.193485
+Create Date: 2020-12-15 17:45:34.272627
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f50395775af8'
+revision = '798e0d092222'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,14 +32,6 @@ def upgrade():
     sa.Column('source_url', sa.Text(), nullable=False),
     sa.Column('create_at', sa.DateTime(), nullable=True),
     sa.Column('update_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('point',
-    sa.Column('id', sa.String(length=32), nullable=False),
-    sa.Column('salary', sa.Integer(), nullable=True),
-    sa.Column('site', sa.String(length=32), nullable=True),
-    sa.Column('year', sa.String(length=32), nullable=True),
-    sa.Column('requirement', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('stat_browse',
@@ -74,6 +66,5 @@ def downgrade():
     op.drop_table('warning_para')
     op.drop_table('stat_info')
     op.drop_table('stat_browse')
-    op.drop_table('point')
     op.drop_table('job_info')
     # ### end Alembic commands ###

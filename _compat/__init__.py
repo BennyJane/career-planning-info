@@ -1,3 +1,4 @@
+import os
 import sys
 
 
@@ -9,14 +10,19 @@ def isWin():
     return windows
 
 
+win = isWin()
+
+
 def modifyPath(relativePath: str) -> str:
     """
-    :param relativePath:  目标文件的相对路径,默认输入linux下路径
+    :param relativePath:  目标文件的相对路径,默认输入linux下路径: logs/api; 开头不能有斜杠
     :return:
     """
     if win:
-        relativePath = '\\'.join(relativePath.split('\\'))
-    return relativePath
+        path = '\\'.join(relativePath.split('\/'))
+    else:
+        path = '/'.join(relativePath.split('\\'))
+    return path
 
 
-win = isWin()
+root_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))

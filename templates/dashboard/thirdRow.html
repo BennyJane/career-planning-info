@@ -13,14 +13,13 @@
                 <div class="card-toolbar">
                     <ul class="nav nav-pills nav-pills-sm nav-dark">
                         <li class="nav-item ml-0">
-                            <span class="btn disabled font-weight-bolder font-size-sm">{{ likeSum }}人</span>
+                            <span class="btn disabled font-weight-bolder font-size-sm"
+                                  id="likeNum">{{ likeSum }}人</span>
                         </li>
-                        <li class="nav-item mb-2" data-toggle="tooltip"
-                            title="{% if likeStatus %} 谢谢你~~  {% else %} 求求你了，给个赞~~ {% endif %}"
+                        <li class="nav-item mb-2" data-toggle="tooltip" id="like-icon" status={{ likeStatus }}
+                                title=""
                             data-placement="top">
-                            {% if likeStatus %}
-                                <a class="btn btn-sm btn-icon btn-bg-danger btn-icon-light"
-                                   href="{{ url_for('index.like') }}">
+                            <a class="btn btn-sm btn-icon btn-bg-danger btn-icon-light" style="display:none;">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:/keen/theme/demo4/dist/assets/media/svg/icons/Shopping/Box2.svg-->
                                     <svg t="1606225521756" class="icon" viewBox="0 0 1027 1024" version="1.1"
@@ -36,10 +35,9 @@
                                     </svg>
                                     <!--end::Svg Icon-->
                                 </span>
-                                </a>
-                            {% else %}
-                                <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger"
-                                   href="{{ url_for('index.like') }}">
+                            </a>
+                            <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger"
+                               style="display:none;">
                                 <span class="svg-icon svg-icon-lg">
                                     <!--begin::Svg Icon | path:/keen/theme/demo4/dist/assets/media/svg/icons/Shopping/Box2.svg-->
                                     <svg t="1606225521756" class="icon" viewBox="0 0 1027 1024" version="1.1"
@@ -55,8 +53,7 @@
                                     </svg>
                                     <!--end::Svg Icon-->
                                 </span>
-                                </a>
-                            {% endif %}
+                            </a>
                         </li>
                     </ul>
                 </div>

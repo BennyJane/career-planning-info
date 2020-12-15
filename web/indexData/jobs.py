@@ -47,9 +47,9 @@ sh_jobs = [
     base_info("python开发工程师", "精通Flask|Mysql", "10-15K·13薪", "驻云科技",
               "https://www.zhipin.com/job_detail/08665ae9c1d996321nV72d-4FFpT.html?ka=search_list_jname_24_blank&lid=aJIhcWHC9B1.search.24",
               "1-3年"),
-    base_info("python后端开发工程师", "web后端开发 Django框架 api设计", "13-20K", "姚记科技股份",
-              "https://www.zhipin.com/job_detail/9ab29c64d0328ddf1nR53d-5GVpR.html?ka=search_list_jname_51_blank&lid=aJIhcWHC9B1.search.51",
-              "3-5年"),
+    # base_info("python后端开发工程师", "web后端开发 Django框架 api设计", "13-20K", "姚记科技股份",
+    #           "https://www.zhipin.com/job_detail/9ab29c64d0328ddf1nR53d-5GVpR.html?ka=search_list_jname_51_blank&lid=aJIhcWHC9B1.search.51",
+    #           "3-5年"),
 
 ]
 

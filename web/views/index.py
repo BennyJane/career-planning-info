@@ -4,7 +4,7 @@
 # @Email : 暂无
 # @File : index.py
 # @Project : ProjectStruct-3-simple
-
+from flask import jsonify
 from flask import Blueprint, render_template, request, url_for, redirect
 
 from web.utils.decorator import statPageView
@@ -31,13 +31,17 @@ def index():
     return render_template('index.html', **locals())
 
 
-@index_bp.route('/link')
-def like():
+@index_bp.route('/like/click/<string:action>')
+def like(action):
     """用户点赞"""
     ip = request.remote_addr
-    statInfoAction(ip=ip, action='like')
-    target_url = url_for('.index') + '#third_row_id'
-    return redirect(target_url)
+    if action == 'click':  #
+        statInfoAction(ip=ip, action='like')
+
+    likeSum = statSum(action='like')
+    likeStatus = isLike(request.remote_addr)
+    data = dict(likeSum=likeSum, likeStatus=likeStatus)
+    return jsonify(data)
 
 
 @index_bp.route('/share')
