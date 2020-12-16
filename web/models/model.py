@@ -58,6 +58,7 @@ class Message(db.Model, TimeMixin):
             kwargs["id"] = _id
         super().__init__(*args, **kwargs)
 
+    @property
     def msg_params(self):
         meg_info = {
             "id": self.id,

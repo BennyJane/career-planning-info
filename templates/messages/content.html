@@ -2,22 +2,28 @@
 {% block title %}career-planning{% endblock title %}
 
 {% block coreBody %}
-  <!--begin::Content-->
-  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-      <!--begin::Container-->
-      <div class="container">
-        <!--begin::Dashboard 看板-->
-        {%  include 'messages/message.html' %}
-        <!--end::Dashboard-->
-      </div>
-      <!--end::Container-->
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="d-flex flex-column-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-xxl-8">
+                        {% include 'messages/message.html' %}
+                    </div>
+                    <div class="col-xl-5 col-xxl-4">
+                        {% include 'messages/msg_form.html' %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-12">
+                        {% include 'messages/msg_list.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include '_footer.html' %}
     </div>
-    <!--end::Entry-->
-      {% include '_footer.html' %}
-  </div>
-  <!--end::Content-->
+    <!--end::Content-->
 {% endblock %}
 
 

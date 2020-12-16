@@ -1,0 +1,19 @@
+<div class="card card-custom card-shadowless bg-gray-100 gutter-b">
+    <div class="card-header border-0 pt-7">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label font-weight-bolder font-size-h4 text-dark-75">添加留言</span>
+            <span class="text-muted mt-3 font-weight-bold font-size-lg">用户名称来自金庸的《倚天屠龙记》,只有需要回复的时候，才需要填写邮箱</span>
+        </h3>
+        <div class="card-body pt-1 pb-4 pt-4" style="padding: 0">
+            <form action="{{ url_for('messages.index') }}" class="flex-row" method="post">
+                {{ form.csrf_token() }}
+                <label class="font-dark-75 font-size-lg font-weight-bold pb-2">邮箱</label>
+                <input name="email" placeholder="需要单独回复，请输入个人邮箱" class="border-0 form-control">
+                <label class="font-dark-75 font-size-lg font-weight-bold pb-2 pt-2">留言内容</label>
+                <textarea name="msg_body" placeholder="留言内容限制为300字" class="border-0 form-control"
+                          style="max-height: 90px; min-height: 35px"></textarea>
+                <button class="btn btn-circle btn-light-primary mt-4">提交</button>
+            </form>
+        </div>
+    </div>
+</div>

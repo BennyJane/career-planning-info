@@ -90,16 +90,23 @@ def msgList():
     res = []
     msgs = Message.query.all()
     for msg in msgs:
-        res.append(msg.meg_info)
+        res.append(msg.msg_params)
     return res
 
 
-def addMsg(params, user=None):
-    if user is None:
-        user = User(username=random.choice(USER_NAME))
-    msg = Message(**params, user_id=user.id)
-    db.session.add_all([user, msg])
+def addMsg(body, user=None):
+    msg = Message(body=body)
+    msg.user = user
+    db.session.add(msg)
     db.session.commit()
+
+
+def addUser(email=""):
+    random_name = random.choice(USER_NAME)
+    user = User(username=random_name, email=email)
+    db.session.add(user)
+    db.session.commit()
+    return user
 
 
 def getUser(email):
