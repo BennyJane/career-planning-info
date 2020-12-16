@@ -4,17 +4,19 @@
     <div class="card-header border-0 pt-7">
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label font-weight-bolder font-size-h4 text-dark-75">数据展示
-                <span class="text-muted font-weight-bold font-size-h5">(累计下载量{{ downloads }})</span>
+                <span class="text-muted font-weight-bold font-size-h5">(累计下载量</span>
+                <span class="text-muted font-weight-bold font-size-h5" id="download-current-num">{{ downloads }}</span>
+                <span class="text-muted font-weight-bold font-size-h5">)</span>
             </span>
             <span class="text-muted mt-3 font-weight-bold font-size-sm">完整数据点击右侧按钮下载</span>
         </h3>
         <div class="card-toolbar">
             <ul class="nav nav-pills nav-pills-sm nav-dark">
-                <li class="ml-0">
+                <li class="ml-0 download-num-asc">
                     <a class="btn-sm btn-default btn-light-primary font-weight-bold font-size-sm"
                        href="{{ url_for('data.download', file='csv', sign=random_string(6)) }}">下载完整CSV数据</a>
                 </li>
-                <li class="ml-5">
+                <li class="ml-5 download-num-asc">
                     <a class="btn-sm btn-light-primary font-weight-bold font-size-sm"
                        href="{{ url_for('data.download', file='word',sign=random_string(6)) }}">下载分析报告</a>
                 </li>

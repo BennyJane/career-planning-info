@@ -6,13 +6,15 @@
         </h3>
     </div>
     <div class="flex-row card-body">
-        <div class="card-title align-items-start flex-column" style="margin: 0.4rem">
-            <span class="card-label font-size-h6 text-dark-50 pr-2">令狐冲</span>
-            <span class="text-muted mt-3 font-weight-bold font-size-lg">2020-12-16 10:00:00</span>
-        </div>
-        <div class="card card-custom card-shadowless h-45px"
-             style="border-radius: 0; display: flex; flex-direction:row;align-items: center">
-            <div class="font-size-h5 text-dark-75 pl-2 " style="align-items: center">第一条留言.....</div>
-        </div>
+        {% for item in msgs %}
+            <div class="card-title align-items-start flex-column pt-4" style="margin: 0.4rem">
+                <span class="card-label font-size-h6 text-dark-50 pr-2">{{ item['name'] }}</span>
+                <span class="text-muted mt-3 font-weight-bold font-size-lg">{{ item['create_at'] }}</span>
+            </div>
+            <div class="card card-custom card-shadowless h-45px"
+                 style="border-radius: 0; display: flex; flex-direction:row;align-items: center">
+                <div class="font-size-h5 text-dark-75 pl-2 " style="align-items: center">{{ item['body'] }}</div>
+            </div>
+        {% endfor %}
     </div>
 </div>

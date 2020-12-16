@@ -4,9 +4,10 @@
 # Time       ：2020/12/15 19:46
 # Warning    ：The Hard Way Is Easier
 import time
+import math
 from flask import current_app
-from _compat import win
 
+from _compat import win
 
 class UrlManager(object):
     def __init__(self):
@@ -33,3 +34,45 @@ class UrlManager(object):
 
         url = "{}{}{}".format(app_config['domain'], upload_path, path)
         return url
+
+
+def iPagination(params):
+    ret = {
+        "is_prev": 1,
+        "is_next": 1,
+        "from": 0,
+        "end": 0,
+        "current": 0,
+        "total_pages": 0,
+        "page_size": 0,
+        "total": 0,
+        "url": params['url']
+    }
+
+    total = params['total']
+    page_size = params['page_size']
+    page = params['page']
+    half_page_display = int(params['half_page_display'])
+    total_pages = int(math.ceil(total / page_size))
+    total_pages = total_pages if total_pages > 0 else 1
+    if page <= 1:
+        ret['is_prev'] = 0
+
+    if page >= total_pages:
+        ret['is_next'] = 0
+
+    if page - half_page_display > 0:
+        ret['from'] = page - half_page_display
+    else:
+        ret['from'] = 1
+
+    if page + half_page_display <= total_pages:
+        ret['to'] = page + half_page_display
+    else:
+        ret['to'] = total_pages
+    ret['current'] = page  # 其实就是 page的值
+    ret['total'] = total
+    ret['total_pages'] = total_pages
+    ret['page_size'] = page_size
+    ret['range'] = range(ret['from'], ret['to'] + 1)
+    return ret

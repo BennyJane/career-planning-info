@@ -1,6 +1,8 @@
 import os
 import sys
 
+root_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 
 def isWin():
     windows = False
@@ -25,4 +27,6 @@ def modifyPath(relativePath: str) -> str:
     return path
 
 
-root_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+def get_key_form_env(key):
+    target_key = os.getenv(key, None)
+    return target_key

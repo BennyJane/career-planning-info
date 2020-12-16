@@ -28,9 +28,9 @@ TARGET_JOB = {
     "name": "Python工程师(web|数据处理|可视化)",
     "skills": [
         "熟练掌握Python编程",
-        "熟练Pandas处理数据，以及Echarts的使用",
-        "熟练使用Flask框架",
         "完成superset开源项目二次开发",
+        "熟练使用Flask框架",
+        "熟练使用Pandas、Echarts",
         "熟悉缓存、消息队列、定时任务等相关技术",
 
         # "熟悉Python的多线程,多进程编程",
@@ -45,7 +45,7 @@ TARGET_JOB = {
 """
 PROJECTS = [
     {
-        "name": "Flask-Demo",
+        "name": "career-planning-info",
         "brief": "Python方向招聘信息展示项目, 抓取招聘网站信息，进行可视化展示，并提供了原始数据下载",
         "url": "https://github.com/BennyJane/career-planning-info",
         "icon": ""
@@ -56,5 +56,10 @@ PROJECTS = [
         "url": "https://github.com/BennyJane/Flask-Demo",
         "icon": ""
     },
-
+    {
+        "name": "web-common-service",
+        "brief": "该项目实现了web开发中常用的功能模块，可作为独立项目为其他项目提供方便的接口",
+        "url": "https://github.com/BennyJane/web-common-service",
+        "icon": ""
+    },
 ]

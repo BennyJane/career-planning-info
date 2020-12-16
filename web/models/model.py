@@ -67,6 +67,7 @@ class Message(db.Model, TimeMixin):
             "avatar": self.user.avatar,
             "body": self.body,
             "reviewed": self.reviewed,
+            "create_at": self.create_time_str,
             "from_admin": self.user.is_admin  # 是否为网站维护者
         }
         return meg_info

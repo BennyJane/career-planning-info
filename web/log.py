@@ -6,7 +6,8 @@
 # @Project : Flask-Demo
 import logging
 import os
-from logging.handlers import RotatingFileHandler, SMTPHandler
+from logging.handlers import RotatingFileHandler
+from logging.handlers import SMTPHandler
 
 from flask import request
 
@@ -58,3 +59,5 @@ def register_logging(app):
         mail_handler.setFormatter(request_formatter)
         if not app.debug:
             app.logger.addHandler(mail_handler)
+
+

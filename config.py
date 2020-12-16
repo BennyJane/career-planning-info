@@ -39,6 +39,9 @@ class BaseConfig(object):
     CSV_PATH = modifyPath('web/crawl/job_20201108.csv')
     WORD_PATH = modifyPath('web/crawl/job_20201108.csv')
 
+    PER_PAGE = 20
+    HALF_PAGE_DISPLAY = 8
+
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")

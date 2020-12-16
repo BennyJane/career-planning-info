@@ -5,6 +5,9 @@
 # Warning    ：The Hard Way Is Easier
 import random
 import datetime
+from flask import request
+
+from flask import current_app
 from sqlalchemy import func
 from sqlalchemy import and_
 
@@ -16,6 +19,7 @@ from web.models import StatBrowse
 from web.constant import USER_NAME
 from web.utils.libs import produceId
 from web.utils.libs import getFormatDate
+from web.utils.common import iPagination
 
 """
 from sqlalchemy import func
@@ -86,14 +90,6 @@ def isLike(ip):
 """
 
 
-def msgList():
-    res = []
-    msgs = Message.query.all()
-    for msg in msgs:
-        res.append(msg.msg_params)
-    return res
-
-
 def addMsg(body, user=None):
     msg = Message(body=body)
     msg.user = user
@@ -112,3 +108,5 @@ def addUser(email=""):
 def getUser(email):
     user = User.query.filter(User.email == email).first()
     return user
+
+

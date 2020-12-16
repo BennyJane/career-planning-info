@@ -33,5 +33,10 @@ MESSAGE_BRIEF = {
     "message_goal": "开放留言板块的目的",
 }
 
+NOTIFY_NEW_MESSAGE_TEMPLATE = "<font color='comment'>[career-planning-info]</font>-新增留言： \n" \
+                              "<font color='comment'>body</font>: **{msg}** \n" \
+                              "<font color='comment'>name</font>: {name} \n" \
+                              "<font color='comment'>email</font>: {email} \n"
+
 if __name__ == '__main__':
     print([i.strip() for i in USER_NAME.split()])

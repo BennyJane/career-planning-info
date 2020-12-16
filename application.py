@@ -26,7 +26,7 @@ PORT = app.config.get('PORT')
 register_logging(app)
 register_ext(app)
 register_bp(app)
-register_cli(app, db)
+register_cli(app)
 register_template_ext(app)
 
 # @app.errorhandler(CSRFProtect)

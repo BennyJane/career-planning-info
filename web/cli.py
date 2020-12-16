@@ -4,14 +4,12 @@
 # @Email : 暂无
 # @File : __init__.py.py
 # @Project : ProjectStruct-3-simple
+from .fake import forge_browse
+from .fake import forge_message
 
 
-def register_cli(app, db):
-    command1(app, db)
+def register_cli(app):
+    cli_func = [forge_message, forge_browse]
 
-
-def command1(app, db):
-    @app.cli.command()
-    def forge():
-        from web.fake import core
-        core(db)
+    for f in cli_func:
+        app.cli.command()(f)
