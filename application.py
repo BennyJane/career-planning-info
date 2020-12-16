@@ -7,7 +7,6 @@
 import os
 from flask import Flask
 from config import config
-from web.extension import db
 from web.cli import register_cli
 from web.views import register_bp
 from web.log import register_logging
