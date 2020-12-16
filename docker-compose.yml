@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  career-plan:
+    container_name: career-plan-info:v1.0
+    build: ./
+    volumes:
+      - ".:/usr/src/app"
+    ports:
+      - 8010:8010

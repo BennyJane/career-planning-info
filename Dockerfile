@@ -2,7 +2,9 @@ FROM python:3.6.6-slim
 
 MAINTAINER Benny Jane
 
-WORKDIR /web
+# 设置工作目录
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
 COPY requirement.txt .
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
@@ -13,4 +15,5 @@ EXPOSE 8010 22 80
 # 通过-p设置端口映射: 外部端口:内部端口；外部访问端口可以不用和内部一致
 # 运行: docker run -it -p 8001:8010 image:v
 # docker run -d -p 8010:8010 image:v
-CMD ["flask", "run", "-p" , "8010", "-h", "0.0.0.0"]
+#CMD ["flask", "run", "-p" , "8010", "-h", "0.0.0.0"]
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
