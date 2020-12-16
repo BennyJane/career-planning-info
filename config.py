@@ -47,10 +47,6 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
     if not os.getenv("SQLALCHEMY_DATABASE_URI"):  # 没有添加mysql数据库连接时，创建sqlite数据库连接
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')
-    # 添加celery配置
-    broker_url = 'redis://localhost:6379'
-    result_backend = 'redis://localhost:6379'
-    imports = ('tasks')
 
     BROWSE_GAP = 1
 
@@ -65,6 +61,7 @@ class ProductionConfig(BaseConfig):
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data.db')
 
     pageView_blackIp = ['127.0.0.1']
+    BROWSE_GAP = 1
 
 
 config = {

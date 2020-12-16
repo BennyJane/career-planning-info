@@ -3,8 +3,8 @@ FROM python:3.6.6-slim
 MAINTAINER Benny Jane
 
 # 设置工作目录
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+#RUN mkdir -p /usr/src/app
+WORKDIR /home/ubuntu/www/career-planning-info
 
 COPY requirement.txt .
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
