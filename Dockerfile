@@ -9,13 +9,7 @@ RUN mkdir -p /usr/src/career
 WORKDIR /usr/src/career
 
 COPY requirement.txt .
-RUN pip install --no-cache-dir -r requirement.txt -i http://pypi.douban.com/simple/
-#    && sudo apt install supervisor
-
-#RUN pip install --no-cache-dir -r requirement.txt
-
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+RUN pip install --no-cache-dir -r requirement.txt
 
 COPY . .
 EXPOSE 8010 22 80
