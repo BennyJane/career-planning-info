@@ -7,4 +7,10 @@ services:
     volumes:
       - ".:/usr/src/app"
     ports:
-      - 8010:8010
+      - "8010:8010"
+    environment:
+      FLASK_ENV: production
+      FLASK_APP: application:app
+      SQLALCHEMY_DATABASE_URI: mysql+pymysql://root:5eNyj6Nf@localhost:13306/career_plan_service?charset=utf8mb4 # 数据库
+      FLASK_SECRET: SDFSDFSDFDSG1554DFS13DF1DS5DSD2F1C56S52ZXX5DA3SD123456
+      WEBHOOK: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=99801f7b-4d65-41a7-bcc2-5a9166e48ef1 # 企业微信机器人
