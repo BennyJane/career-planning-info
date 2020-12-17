@@ -3,11 +3,11 @@ workers = 2
 # 指定每个工作者的线程数
 threads = 4
 # 监听内网端口80
-bind = '0.0.0.0:80'
+bind = '0.0.0.0:8010'
 # 工作模式协程
 # worker_class = 'gevent'
 # 设置最大并发量
-worker_connections = 20
+worker_connections = 2000
 # 设置进程文件目录
 pidfile = 'gunicorn.pid'
 # 设置访问日志和错误信息日志路径
