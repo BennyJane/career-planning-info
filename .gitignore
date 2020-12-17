@@ -135,7 +135,9 @@ dmypy.json
 upload/demo-1/uploads/*
 #*/logs/*
 # 保留logs文件夹
-/logs/*
+/logs/*.log
+/logs/gunicorn/*
+/logs/web/*
 */log_*/*
 *.log
 
