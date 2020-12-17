@@ -5,7 +5,7 @@ threads = 4
 # 监听内网端口80
 bind = '0.0.0.0:80'
 # 工作模式协程
-worker_class = 'gevent'
+# worker_class = 'gevent'
 # 设置最大并发量
 worker_connections = 20
 # 设置进程文件目录
