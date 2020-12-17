@@ -9,7 +9,10 @@ RUN mkdir -p /usr/src/career
 WORKDIR /usr/src/career
 
 COPY requirement.txt .
-RUN pip install --no-cache-dir -r requirement.txt
+
+RUN pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install --no-cache-dir -r requirement.txt
 
 COPY . .
 EXPOSE 8010 22 80
