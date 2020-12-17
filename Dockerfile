@@ -13,7 +13,7 @@ COPY requirement.txt .
 RUN pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -25,4 +25,4 @@ EXPOSE 8010 22 80
 # 运行: docker run -it -p 8001:8010 image:v
 # docker run -d -p 8010:8010 image:v
 #CMD ["flask", "run", "-p" , "8010", "-h", "0.0.0.0"]
-CMD ["gunicorn", "-c", "gunicorn.conf", "-b", "0.0.0.0:8010", "application:app"]
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "-b", "0.0.0.0:8010", "application:app"]
