@@ -12,9 +12,9 @@ COPY requirement.txt .
 
 RUN pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install gunicorn \
-    && pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install --no-cache-dir -r requirement.txt
+    && pip install gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 COPY . .
 EXPOSE 8010 22 80
