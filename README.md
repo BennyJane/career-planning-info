@@ -19,7 +19,7 @@ Python的职位信息
 
 ### docker 
 ```shell script
-
+docker build -t career-plan:v1.0 .
 docker run -it --name career_plan -p 8010:8010 career-plan:v1.0
 
 

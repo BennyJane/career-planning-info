@@ -2,6 +2,8 @@ version: '2.1'
 
 services:
   career-plan:
+    # 优先获取该镜像，当不存在的时候，才会利用dockerdockefile构建
+    image: career-plan:v1.0
     container_name: career-plan
     build: ./
     volumes:
@@ -9,6 +11,7 @@ services:
     ports:
       - "8010:8010"
     environment:
+      # 优化： 从外部传入
       FLASK_ENV: production
       FLASK_APP: application:app
       SQLALCHEMY_DATABASE_URI: mysql+pymysql://root:5eNyj6Nf@localhost:13306/career_plan_service?charset=utf8mb4 # 数据库
