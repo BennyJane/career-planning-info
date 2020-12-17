@@ -14,6 +14,6 @@ services:
       # 优化： 从外部传入
       FLASK_ENV: production
       FLASK_APP: application:app
-      SQLALCHEMY_DATABASE_URI: mysql+pymysql://root:5eNyj6Nf@localhost:13306/career_plan_service?charset=utf8mb4 # 数据库
+      SQLALCHEMY_DATABASE_URI: mysql+pymysql://root:5eNyj6Nf@119.45.42.23:13306/career_plan_service?charset=utf8mb4 # 数据库
       FLASK_SECRET: SDFSDFSDFDSG1554DFS13DF1DS5DSD2F1C56S52ZXX5DA3SD123456
       WEBHOOK: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=99801f7b-4d65-41a7-bcc2-5a9166e48ef1 # 企业微信机器人
