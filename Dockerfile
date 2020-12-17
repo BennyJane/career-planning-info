@@ -24,4 +24,4 @@ EXPOSE 8010 22 80
 # 运行: docker run -it -p 8001:8010 image:v
 # docker run -d -p 8010:8010 image:v
 #CMD ["flask", "run", "-p" , "8010", "-h", "0.0.0.0"]
-CMD ['gunicorn', '-c', 'gunicorn.conf', 'application:app']
+CMD ["gunicorn", "-c", "gunicorn.conf", "-b", "0.0.0.0:8010", "application:app"]
