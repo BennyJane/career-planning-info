@@ -10,8 +10,8 @@ WORKDIR /usr/src/career
 
 COPY requirement.txt .
 
-RUN pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
+RUN pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install --no-cache-dir -r requirement.txt
 
 COPY . .

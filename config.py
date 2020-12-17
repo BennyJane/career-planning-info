@@ -4,8 +4,8 @@
 # @Email : 暂无
 # @File : app.py
 import os
-import sys
-from _compat import win, modifyPath
+from _compat import win
+from _compat import modifyPath
 
 # 考虑直接使用app的root_path 路径
 baseDir = os.path.abspath(os.path.dirname(__file__))
