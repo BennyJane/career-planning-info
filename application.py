@@ -11,6 +11,7 @@ from web.cli import register_cli
 from web.views import register_bp
 from web.log import register_logging
 from web.extension import register_ext
+from web.errors import register_errors
 from web.template_ext import register_template_ext
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -26,6 +27,7 @@ register_logging(app)
 register_ext(app)
 register_bp(app)
 register_cli(app)
+register_errors(app)
 register_template_ext(app)
 
 # @app.errorhandler(CSRFProtect)

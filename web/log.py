@@ -27,10 +27,12 @@ def register_logging(app):
         '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
         '%(levelname)s in %(module)s: %(message)s'
     )
-
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    file_handler = RotatingFileHandler(os.path.join(basedir, f'logs/{project_name}.log'),
+    log_path = os.path.join(basedir, f'logs/{project_name}')
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+    file_handler = RotatingFileHandler("{}/career_plan.log".format(log_path),
                                        maxBytes=10 * 1024 * 1024, backupCount=10)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
@@ -59,5 +61,3 @@ def register_logging(app):
         mail_handler.setFormatter(request_formatter)
         if not app.debug:
             app.logger.addHandler(mail_handler)
-
-

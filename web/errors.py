@@ -35,4 +35,4 @@ def allException(e):  # 全局异常处理
     config = current_app.config
     if config.get("IS_DEBUG"):  # 开发模式下，打印输出异常发生的位置
         current_app.logger.debug(traceback.format_exc())
-    return redirect(url_for("index.index"))
+    return render_template('errors/500.html'), 500

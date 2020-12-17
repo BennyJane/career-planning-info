@@ -1,5 +1,6 @@
 # career-planning-info
-Python的职位信息
+Python的职位信息；
+项目网站URL：http://career.pygorun.com/
 
 
 ### 项目文件结构说明

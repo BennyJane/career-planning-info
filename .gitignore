@@ -133,7 +133,9 @@ dmypy.json
 .idea/*
 */uploads/*
 upload/demo-1/uploads/*
-*/logs/*
+#*/logs/*
+# 保留logs文件夹
+/logs/*
 */log_*/*
 *.log
 

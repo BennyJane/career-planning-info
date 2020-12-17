@@ -11,9 +11,9 @@ worker_connections = 2000
 # 设置进程文件目录
 pidfile = 'gunicorn.pid'
 # 设置访问日志和错误信息日志路径
-accesslog = 'gunicorn_acess.log'
-errorlog  = 'gunicorn_error.log'
+accesslog = './logs/gunicorn/gunicorn_acess.log'
+errorlog = './logs/gunicorn/gunicorn_error.log'
 # 设置日志记录水平
 loglevel = 'info'
 # 代码发生变化是否自动重启
-reload=True
+reload = True

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block title %}career-planning{% endblock title %}
+
+{% block coreBody %}
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="d-flex flex-column-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-xxl-8">
+                        {% block error %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include '_footer.html' %}
+    </div>
+    <!--end::Content-->
+{% endblock %}
+
+
