@@ -18,7 +18,7 @@ RUN pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 COPY . .
-EXPOSE 8010 22 80
+EXPOSE 8010
 # 需要设置host为 0.0.0.0
 # 通过-p设置端口映射: 外部端口:内部端口；外部访问端口可以不用和内部一致
 # 创建镜像： docker build -t name:v1.0 .
