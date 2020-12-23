@@ -18,7 +18,6 @@ RUN pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
 RUN pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-VOLUME
 
 EXPOSE 8010
 # 需要设置host为 0.0.0.0

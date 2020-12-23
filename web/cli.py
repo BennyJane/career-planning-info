@@ -10,6 +10,5 @@ from .fake import forge_message
 
 def register_cli(app):
     cli_func = [forge_message, forge_browse]
-
     for f in cli_func:
         app.cli.command()(f)
