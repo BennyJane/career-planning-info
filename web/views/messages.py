@@ -40,8 +40,7 @@ def index():
             params = {"msg": msg_body, "name": user.username, "email": user.email}
             wx_notify.new_message(params)
         except Exception as e:
-            current_app.logger.debug(str(e))
-
+            current_app.logger.error(str(e))
         return redirect(url_for(".index"))
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['PER_PAGE']  # 考虑字符串问题

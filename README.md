@@ -62,6 +62,11 @@ docker-compose build .
 docker-compose up -d
 ```
 
+### 注意事项
+- 使用VPN后，可能会导致无法发送企业微信消息
+
+
 ### TODO
 - 后端数据库由Mysql改为Redis
-- 优化页面加载速度
+- 使用消息队列存储用户留言，避免因为发送失败导致错误通知
+~~- 优化页面加载速度：使用redis缓存整个页面~~

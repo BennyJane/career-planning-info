@@ -3,7 +3,7 @@
 # PROJECT    : career-planning-info
 # Time       ：2020/12/15 19:59
 # Warning    ：The Hard Way Is Easier
-import sys
+
 import datetime
 from flask import request
 from flask import current_app
@@ -51,9 +51,10 @@ def cache_by_redis(f):
             html = f(*args, **kwargs)
             redis_manager.conn.set(key, html, ex=60 * 60 * 24)
             return html
-
-        print(len(res) / 1024 / 1024)
-        print(sys.getsizeof(res))
+        # 计算缓存字符串长度
+        # import sys
+        # print(len(res) / 1024 / 1024)
+        # print(sys.getsizeof(res))
         return res
 
     return wrapper

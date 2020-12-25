@@ -9,6 +9,7 @@ from flask import current_app
 
 from _compat import win
 
+
 class UrlManager(object):
     def __init__(self):
         pass
@@ -76,3 +77,4 @@ def iPagination(params):
     ret['page_size'] = page_size
     ret['range'] = range(ret['from'], ret['to'] + 1)
     return ret
+

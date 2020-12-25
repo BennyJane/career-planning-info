@@ -25,7 +25,7 @@ class RedisManager(object):
         pools = redis.ConnectionPool(host=config.get('REDIS_HOST'),
                                      port=config.get('REDIS_PORT'),
                                      password=config.get('REDIS_PASSWORD'),
-                                     # db=config.get('REDIS_DB') or 0,
+                                     db=config.get('REDIS_DB') or 0,
                                      )
         self.conn = redis.Redis(connection_pool=pools)
 

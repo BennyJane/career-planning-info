@@ -4,8 +4,8 @@
 # @Email : 暂无
 # @File : command.py
 # @Project : Flask-Demo
-import logging
 import os
+import logging
 from logging.handlers import RotatingFileHandler
 from logging.handlers import SMTPHandler
 
@@ -37,29 +37,10 @@ def register_logging(app):
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
 
+    # 需要设置整个日志的等级，开发调试模式下，默认为debug； 没有设置会导致无法输出日志
+    app.logger.setLevel(logging.INFO)
     if not app.debug:
+        # 生产模式下，需要设置合适等级
+        # app.logger.setLevel(logging.ERROR)
+        app.logger.setLevel(logging.INFO)
         app.logger.addHandler(file_handler)
-
-    '''
-    ====================================================================================================
-    添加邮件通知任务
-    ====================================================================================================
-    '''
-
-    mailhost = app.config.get('MAIL_SERVER', '')
-    fromaddr = app.config.get('MAIL_USERNAME', '')
-    toaddrs = app.config.get('ADMIN_EMAIL', '')
-
-    if all([mailhost, fromaddr, toaddrs]):
-        mail_handler = SMTPHandler(
-            mailhost=mailhost,
-            fromaddr=fromaddr,
-            toaddrs=toaddrs,
-            subject='Bluelog Application Error',
-            credentials=(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD']))
-        mail_handler.setLevel(logging.ERROR)
-        mail_handler.setFormatter(request_formatter)
-        if not app.debug:
-            app.logger.addHandler(mail_handler)
-
-
