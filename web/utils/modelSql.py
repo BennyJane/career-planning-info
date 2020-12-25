@@ -51,12 +51,10 @@ def statInfoAction(ip, action='like'):
     # 两种行为的初始化操作一致
     isExist = StatInfo.query.filter(StatInfo.ip == ip).filter(StatInfo.action == action).first()
     if not isExist:
-        print("add download ....")
         info = StatInfo(id=produceId(), ip=ip, action=action, count=1)
         db.session.add(info)
         db.session.commit()
     else:
-        print("add like ....")
         if action == 'like':
             isExist.count = 0 if isExist.count == 1 else 1  # 不需要add
         elif action == 'download':

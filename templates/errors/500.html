@@ -4,6 +4,7 @@
     <div class="text-warning font-size-h3 font-weight-bold">
         Internal Server Error - 500
         <sapn class="pl-5">
+            <p>{% if error_info %} {{ error_info }}{% endif %}</p>
             <a href="{{ url_for('index.index') }}">Go Back</a>
         </sapn>
     </div>

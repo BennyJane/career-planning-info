@@ -17,7 +17,7 @@ from web.template_ext import register_template_ext
 base_dir = os.path.abspath(os.path.dirname(__file__))
 static_file = os.path.join(base_dir, 'static')
 
-config_name = os.getenv("FLASK_CONFIG", 'development')
+config_name = os.getenv("FLASK_ENV", 'development')
 app = Flask(__name__, static_folder=static_file, root_path=base_dir)
 app.config.from_object(config[config_name])
 HOST = app.config.get('HOST')

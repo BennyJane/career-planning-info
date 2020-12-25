@@ -8,7 +8,6 @@ services:
     build: ./
     volumes:
       - ".:/usr/src/app"
-      - "./logs:/usr/src/app/logs"
     ports:
       - "8010:8010"
     environment:

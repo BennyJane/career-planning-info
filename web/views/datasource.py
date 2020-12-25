@@ -19,7 +19,7 @@ data_bp = Blueprint('data', __name__)
 
 
 @data_bp.route('/')
-@cache_by_redis
+# @cache_by_redis
 def index():
     config = current_app.config
     table_rows = config.get('TABLE_ROWS', 10)

@@ -55,6 +55,7 @@ flask run
 # docker 运行项目： 本地测试使用
 docker build -t career-plan:v1.0 .
 docker run -it --name career_plan -p 8010:8010 career-plan:v1.0
+docker run -it --name career -p 8010:8010 career-plan:v1.0
 
 # docker-compose 运行项目： 线上部署使用
 docker-compose build .

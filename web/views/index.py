@@ -19,7 +19,7 @@ index_bp = Blueprint('index', __name__)
 
 
 @index_bp.route('/')
-@cache_by_redis
+# @cache_by_redis
 @statPageView
 def index():
     from web.indexData import TARGET_JOB, DEMANDS, PROJECT_HISTORY, \
