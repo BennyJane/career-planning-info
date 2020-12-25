@@ -13,7 +13,7 @@ COPY . .
 RUN pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install -U setuptools -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install gunicorn -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple
+    && pip install gevent
 # 全部合并到一个 RUN指令中，可能会出现请求超时的情况；适当拆分
 RUN pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache-dir -r requirement.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
