@@ -14,4 +14,5 @@ def cache_del(page):
     """删除页面缓存"""
     key = f"html:{page}"
     redis_manager.conn.delete(key)
+    print(redis_manager.conn.get(key), page)
     return f"{page}: 缓存已经删除"
