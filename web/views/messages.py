@@ -58,4 +58,5 @@ def index():
     # 筛选当前页面的数据
     offset = (page - 1) * per_page
     msgs = query.offset(offset).limit(per_page).all()
+    msgs = [msg.msg_params for msg in msgs]
     return render_template('messages/content.html', msgs=msgs, form=form, page_params=page_params)
