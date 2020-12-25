@@ -67,9 +67,9 @@ class ProductionConfig(BaseConfig):
     BROWSE_GAP = 1
 
     # 配置redis
-    REDIS_HOST = '127.0.0.1'
+    REDIS_HOST = '119.45.42.23'
     REDIS_PORT = 6379
-    REDIS_PASSWORD = ""
+    REDIS_PASSWORD = get_key_form_env("REDIS_PASSWORD")
     REDIS_DB = 1
 
 
