@@ -1,9 +1,11 @@
 import datetime
 from flask import request
+from flask import current_app
 from functools import wraps
-from web.models import StatBrowse
 from web.extension import db
-from .libs import produceId
+from web.models import StatBrowse
+from web.utils.libs import produceId
+from web.extension import redis_manager
 
 
 def statPageView(f):
@@ -20,11 +22,29 @@ def statPageView(f):
         # 间隔超过30分钟增加一个浏览量
         is_browsed = StatBrowse.query.filter_by(ip=ip) \
             .filter(StatBrowse.create_at >= minutes_before_30m).first()
-        print(is_browsed, 'is browsed')
         if not is_browsed:
             brose = StatBrowse(id=produceId(), ip=ip, origin=origin_view_func)
             db.session.add(brose)
             db.session.commit()
         return f(*args, **kwargs)
+
+    return wrapper
+
+
+def cache_by_redis(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        view_endpoint = request.endpoint
+        key = f"html:{view_endpoint}"
+        try:
+            res = redis_manager.conn.get(key)
+        except Exception as e:
+            res = ""
+            current_app.logger.debug(e)
+        if not res:
+            html = f(*args, **kwargs)
+            redis_manager.conn.set(key, html, ex=60 * 60 * 24)
+            return html
+        return res
 
     return wrapper

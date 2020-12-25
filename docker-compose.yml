@@ -12,6 +12,7 @@ services:
       - "8010:8010"
     environment:
       # 优化： 从外部传入
+      # .env 文件，flask可以使用，同时docker-compose也可以从中直接获取环境变量
       FLASK_ENV:
       FLASK_APP:
       SQLALCHEMY_DATABASE_URI:

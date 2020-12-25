@@ -4,8 +4,6 @@
 # Time       ：2020/12/15 20:08
 # Warning    ：The Hard Way Is Easier
 import traceback
-from flask import url_for
-from flask import redirect
 from flask import current_app
 from flask import render_template
 

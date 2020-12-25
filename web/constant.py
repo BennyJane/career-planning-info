@@ -38,5 +38,7 @@ NOTIFY_NEW_MESSAGE_TEMPLATE = "<font color='comment'>[career-planning-info]</fon
                               "<font color='comment'>name</font>: {name} \n" \
                               "<font color='comment'>email</font>: {email} \n"
 
+
+
 if __name__ == '__main__':
     print([i.strip() for i in USER_NAME.split()])

@@ -6,7 +6,7 @@
 import os
 from _compat import win
 from _compat import modifyPath
-
+from _compat import get_key_form_env
 # 考虑直接使用app的root_path 路径
 baseDir = os.path.abspath(os.path.dirname(__file__))
 
@@ -45,21 +45,32 @@ class BaseConfig(object):
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
-    print("mysql", SQLALCHEMY_DATABASE_URI)
+    # print("mysql", SQLALCHEMY_DATABASE_URI)
     if not os.getenv("SQLALCHEMY_DATABASE_URI"):  # 没有添加mysql数据库连接时，创建sqlite数据库连接
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')
 
     BROWSE_GAP = 1
 
+    # 配置redis
+    REDIS_HOST = '127.0.0.1'
+    REDIS_PORT = 6379
+    REDIS_PASSWORD = get_key_form_env("REDIS_PASSWORD")
+    REDIS_DB = 1
+
 
 class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
-    print("mysql", SQLALCHEMY_DATABASE_URI)
     if not os.getenv("SQLALCHEMY_DATABASE_URI"):  # 没有添加mysql数据库连接时，创建sqlite数据库连接
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data.db')
 
     pageView_blackIp = ['127.0.0.1']
     BROWSE_GAP = 1
+
+    # 配置redis
+    REDIS_HOST = '127.0.0.1'
+    REDIS_PORT = 6379
+    REDIS_PASSWORD = ""
+    REDIS_DB = 1
 
 
 class TestingConfig(BaseConfig):

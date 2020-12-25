@@ -4,7 +4,6 @@
 # Time       ：2020/12/15 21:51
 # Warning    ：The Hard Way Is Easier
 import os
-
 import pandas as pd
 from flask import request
 from flask import Blueprint
@@ -12,6 +11,7 @@ from flask import current_app
 from flask import render_template
 from flask import send_from_directory
 
+from web.utils.decorator import cache_by_redis
 from web.crawl.utils import joinDemand
 from web.utils.modelSql import statInfoAction, statSum
 
@@ -19,6 +19,7 @@ data_bp = Blueprint('data', __name__)
 
 
 @data_bp.route('/')
+@cache_by_redis
 def index():
     config = current_app.config
     table_rows = config.get('TABLE_ROWS', 10)

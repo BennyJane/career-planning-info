@@ -61,3 +61,5 @@ def register_logging(app):
         mail_handler.setFormatter(request_formatter)
         if not app.debug:
             app.logger.addHandler(mail_handler)
+
+

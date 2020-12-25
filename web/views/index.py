@@ -13,11 +13,13 @@ from web.utils.modelSql import statSum
 from web.utils.modelSql import statBrowses
 from web.utils.decorator import statPageView
 from web.utils.modelSql import statInfoAction
+from web.utils.decorator import cache_by_redis
 
 index_bp = Blueprint('index', __name__)
 
 
 @index_bp.route('/')
+@cache_by_redis
 @statPageView
 def index():
     from web.indexData import TARGET_JOB, DEMANDS, PROJECT_HISTORY, \
@@ -33,6 +35,7 @@ def index():
     targetJob = TARGET_JOB  # 目标工作
     pageViews = statBrowses()
     projectHistory = reversed(PROJECT_HISTORY)  # 项目更新日志
+
     return render_template('index.html', **locals())
 
 
@@ -49,6 +52,4 @@ def like(action):
     return jsonify(data)
 
 
-@index_bp.route('/share')
-def share():
-    """分享网站链接"""
+

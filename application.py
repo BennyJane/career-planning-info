@@ -30,10 +30,5 @@ register_cli(app)
 register_errors(app)
 register_template_ext(app)
 
-# @app.errorhandler(CSRFProtect)
-# def handle_csrf_error(e):
-#     return render_template('errors/400.html', description=e.description), 400
-
-
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT)

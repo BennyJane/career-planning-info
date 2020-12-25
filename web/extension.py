@@ -8,11 +8,13 @@ from flask_moment import Moment
 from flask_migrate import Migrate
 from flask_wtf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
+from web.utils.redis_lib import RedisManager
 
 db = SQLAlchemy()
 migrate = Migrate()
 csrf = CSRFProtect()
 moment = Moment()
+redis_manager = RedisManager()
 
 
 def register_ext(app):
@@ -20,3 +22,4 @@ def register_ext(app):
     migrate.init_app(app, db)
     csrf.init_app(app)
     moment.init_app(app)
+    redis_manager.init_app(app)
