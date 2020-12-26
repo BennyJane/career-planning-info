@@ -1,5 +1,6 @@
 version: '2.1'
 
+# 服务器使用版本
 services:
   career-plan:
     # 优先获取该镜像，当不存在的时候，才会利用dockerdockefile构建
