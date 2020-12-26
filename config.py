@@ -6,7 +6,6 @@
 import os
 from _compat import win
 from _compat import modifyPath
-from _compat import get_key_form_env
 from dotenv import load_dotenv
 
 # FIXME 手动加载环境变量， 否则使用gunicorn部署会报错
@@ -50,32 +49,29 @@ class BaseConfig(object):
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
-    print("mysql", SQLALCHEMY_DATABASE_URI)
     if not SQLALCHEMY_DATABASE_URI:  # 没有添加mysql数据库连接时，创建sqlite数据库连接
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')
-
+    print("mysql uri", SQLALCHEMY_DATABASE_URI)
     BROWSE_GAP = 1
 
-    # 配置redis
-    REDIS_HOST = '127.0.0.1'
-    REDIS_PORT = 6379
-    REDIS_PASSWORD = get_key_form_env("REDIS_PASSWORD")
-    REDIS_DB = 1
+    # 配置redis  带密码： redis://[:password]@127.0.0.1:6379/0
+    REDIS_URI = os.getenv("REDIS_URI")
+    if not REDIS_URI:
+        REDIS_URI = f'redis://:life123456@127.0.0.1:6379/1'
 
 
 class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
     if not SQLALCHEMY_DATABASE_URI:  # 没有添加mysql数据库连接时，创建sqlite数据库连接
-        SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data.db')
+        SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-pro.db')
 
     pageView_blackIp = ['127.0.0.1']
     BROWSE_GAP = 1
 
-    # 配置redis
-    REDIS_HOST = '119.45.42.23'
-    REDIS_PORT = 6379
-    REDIS_PASSWORD = get_key_form_env("REDIS_PASSWORD")
-    REDIS_DB = 1
+    # 配置redis  带密码： redis://[:password]@127.0.0.1:6379/0
+    REDIS_URI = os.getenv("REDIS_URI")
+    if not REDIS_URI:
+        REDIS_URI = f'redis://:life123456@127.0.0.1:6379/1'
 
 
 class TestingConfig(BaseConfig):

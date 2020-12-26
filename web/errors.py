@@ -29,7 +29,6 @@ def internal_server_error(e):
 
 
 def allException(e):  # 全局异常处理
-    print(e)
     current_app.logger.debug(str(e))
     config = current_app.config
     if config.get("IS_DEBUG"):  # 开发模式下，打印输出异常发生的位置

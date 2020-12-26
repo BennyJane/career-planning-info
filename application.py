@@ -30,5 +30,8 @@ register_cli(app)
 register_errors(app)
 register_template_ext(app)
 
+app.logger.error(app.config.get("SQLALCHEMY_DATABASE_URI"))
+
+
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT)

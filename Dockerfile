@@ -24,4 +24,6 @@ EXPOSE 8010
 # 创建镜像： docker build -t name:v1.0 .
 # 运行: docker run -it -p 8001:8010 image:v
 # docker run -d -p 8010:8010 image:v
-CMD ["gunicorn", "-c", "gunicorn.conf.py","application:app", "--preload"]
+#CMD ["gunicorn", "-c", "gunicorn.conf.py","application:app", "--preload"]
+#CMD ["/bin/bash", "/usr/src/career/deploy.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/src/career/deploy.sh"]

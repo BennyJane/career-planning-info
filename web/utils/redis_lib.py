@@ -22,11 +22,7 @@ class RedisManager(object):
     def init_app(self, app):
         """通过调用init_app()方法，绑定到app实例"""
         config = app.config
-        pools = redis.ConnectionPool(host=config.get('REDIS_HOST'),
-                                     port=config.get('REDIS_PORT'),
-                                     password=config.get('REDIS_PASSWORD'),
-                                     db=config.get('REDIS_DB') or 0,
-                                     )
+        pools = redis.ConnectionPool.from_url(config.get("REDIS_URI"))
         self.conn = redis.Redis(connection_pool=pools)
 
 
