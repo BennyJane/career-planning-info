@@ -57,6 +57,8 @@ histories = [
     history(pencil_icon, "2020-11-19", "处理项目所需数据"),
     history(pencil_icon, "2020-11-21", "初步配置完首页数据"),
     history(pencil_icon, "2020-11-23", "完成表单数据展示"),
+    history(pencil_icon, "2020-12-17", "完成线上部署"),
+    history(pencil_icon, "2020-12-27", "更新docker-compose"),
 ]
 
 lastInfo = lastUpdate(histories[-1].date)
@@ -65,4 +67,4 @@ end = [
     history(pencil_icon, lastInfo['date'], lastInfo['info']),
 ]
 
-PROJECT_HISTORY = histories + end
+PROJECT_HISTORY = histories[-4:-1] + end
