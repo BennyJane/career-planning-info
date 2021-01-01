@@ -4,7 +4,6 @@
 # Time       ：2020/12/25 15:59
 # Warning    ：The Hard Way Is Easier
 from flask import Blueprint
-from flask import current_app
 from web.extension import redis_manager
 
 extra_bp = Blueprint('extra', __name__)

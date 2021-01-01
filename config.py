@@ -51,7 +51,6 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
     if not SQLALCHEMY_DATABASE_URI:  # 没有添加mysql数据库连接时，创建sqlite数据库连接
         SQLALCHEMY_DATABASE_URI = prefix + os.path.join(baseDir, 'data-dev.db')
-    print("mysql uri", SQLALCHEMY_DATABASE_URI)
     BROWSE_GAP = 1
 
     # 配置redis  带密码： redis://[:password]@127.0.0.1:6379/0
@@ -81,5 +80,5 @@ class TestingConfig(BaseConfig):
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
-    'produce': ProductionConfig,
+    'production': ProductionConfig,
 }

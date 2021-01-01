@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/10/28
-# @Author : Benny Jane
-# @Email : 暂无
-# @File : app.py
-# @Project : ProjectStruct-3-simple
 import os
 from flask import Flask
 from config import config
@@ -29,8 +25,6 @@ register_bp(app)
 register_cli(app)
 register_errors(app)
 register_template_ext(app)
-
-app.logger.error(app.config.get("SQLALCHEMY_DATABASE_URI"))
 
 
 if __name__ == '__main__':

@@ -47,20 +47,28 @@ def statBrowses():
     return dict(total=total, browses=browses_ratio)
 
 
+def insert_ip(ip, funcName):
+    brose = StatBrowse(id=produceId(), ip=ip, origin=funcName)
+    db.session.add(brose)
+    db.session.commit()
+
+
 def statInfoAction(ip, action='like'):
-    # 两种行为的初始化操作一致
-    isExist = StatInfo.query.filter(StatInfo.ip == ip).filter(StatInfo.action == action).first()
-    if not isExist:
-        info = StatInfo(id=produceId(), ip=ip, action=action, count=1)
-        db.session.add(info)
+    """点赞与下载量统计，逻辑基本一致，需要考虑并发情况,使用with_for_update"""
+    try:
+        isExist = StatInfo.query.filter(StatInfo.ip == ip).filter(StatInfo.action == action).with_for_update().first()
+        if not isExist:
+            info = StatInfo(id=produceId(), ip=ip, action=action, count=1)
+            db.session.add(info)
+        else:
+            if action == 'like':
+                isExist.count = 0 if isExist.count == 1 else 1  # 不需要add
+            elif action == 'download':
+                isExist.count += 1  # 不需要add
+            db.session.add(isExist)
         db.session.commit()
-    else:
-        if action == 'like':
-            isExist.count = 0 if isExist.count == 1 else 1  # 不需要add
-        elif action == 'download':
-            isExist.count += 1  # 不需要add
-        db.session.add(isExist)
-        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
 
 
 def statSum(action='download'):
@@ -102,5 +110,3 @@ def addUser(email=""):
 def getUser(email):
     user = User.query.filter(User.email == email).first()
     return user
-
-

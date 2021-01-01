@@ -3,10 +3,10 @@
 # PROJECT    : career-planning-info
 # Time       ：2020/12/24 14:51
 # Warning    ：The Hard Way Is Easier
+import json
 import redis
 import logging
 import datetime
-from flask import Flask
 from contextlib import contextmanager
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,27 @@ class RedisManager(object):
         config = app.config
         pools = redis.ConnectionPool.from_url(config.get("REDIS_URI"))
         self.conn = redis.Redis(connection_pool=pools)
+
+    def browse_stat(self, ip):
+        """记录IP访问时间"""
+        key = f"career:IP:{ip}"
+        is_exist = self.conn.get(key)
+        if not is_exist:
+            value = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:S")
+            self.conn.set(key, value, ex=60 * 60 * 12)
+            return False
+        return True
+
+    def bar_table_data(self, callback=None):
+        key = "career:bar:data"
+        bar_data = self.conn.get(key)
+        if not bar_data:
+            bar_data = callback()
+            bar_data_str = json.dumps(bar_data, ensure_ascii=False)
+            self.conn.set(key, bar_data_str, ex=60 * 60 * 12)
+        else:
+            bar_data = json.loads(bar_data)
+        return bar_data
 
 
 @contextmanager

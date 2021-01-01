@@ -1,0 +1,73 @@
+version: '2.1'
+
+services:
+  mysql-db:
+    container_name: mysql-db
+    build:
+      context: ./deploy/mysql
+      args:
+        - MYSQL_VER=5.7
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./deploy/mysql/conf.d:/etc/mysql/conf.d:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: career_plan_service
+    restart: always
+    networks:
+      - career-web
+    healthcheck:
+      test: exit 0
+    command: "--character-set-server=utf8mb4"
+
+  redis-db:
+    container_name: redis-db
+    build:
+      context: ./deploy/redis
+      args:
+        - REDIS_VER=5
+    ports:
+      - "6380:6379"
+    volumes:
+      # 挂载路径： 相对于当前docker-compose文件所在的目录
+      - ./deploy/redis/redis.conf:/usr/local/etc/redis/redis.conf:rw
+    restart: always
+    networks:
+      - career-web
+    healthcheck:
+      test: exit 0
+
+  career-plan:
+    # 优先获取该镜像，当不存在的时候，才会利用dockerdockefile构建
+    image: career-plan:v1.0
+    container_name: career-plan
+    build: ./
+    volumes:
+      - .:/usr/src/app
+      - ./logs:/usr/src/app/logs
+    ports:
+      - "8010:8010"
+    environment:
+      # 优化： 从外部传入
+      # .env 文件，flask可以使用，同时docker-compose也可以从中直接获取环境变量
+      FLASK_ENV:
+      FLASK_APP:
+      SQLALCHEMY_DATABASE_URI: mysql+pymysql://root:123456@mysql:3306/career_plan_service?charset=utf8mb4
+      REDIS_URI: redis://:life123456@redis:6379/1
+      FLASK_SECRET:
+      WEBHOOK:
+    networks:
+      - career-web
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      redis-db:
+        condition: service_healthy
+    links:
+      - mysql-db:mysql
+      - redis-db:redis
+
+networks:
+  career-web:
+    driver: bridge
