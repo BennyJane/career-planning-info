@@ -59,6 +59,7 @@ histories = [
     history(pencil_icon, "2020-11-23", "完成表单数据展示"),
     history(pencil_icon, "2020-12-17", "完成线上部署"),
     history(pencil_icon, "2020-12-27", "更新docker-compose"),
+    history(pencil_icon, "2021-01-01", "增加更多缓存设置，优化页面访问速度"),
 ]
 
 lastInfo = lastUpdate(histories[-1].date)

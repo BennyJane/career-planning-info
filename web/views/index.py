@@ -9,6 +9,7 @@ from flask import Blueprint
 from flask import render_template
 
 from web.utils.modelSql import isLike
+from web.utils.modelSql import statBrowses
 from web.utils.modelSql import statSum
 from web.utils.decorator import statPageView
 from web.utils.modelSql import statInfoAction
@@ -33,7 +34,7 @@ def index():
     likeSum = statSum(action='like')
     likeStatus = isLike(request.remote_addr)
     targetJob = TARGET_JOB  # 目标工作
-    pageViews = redis_manager.bar_table_data()
+    pageViews = redis_manager.bar_table_data(callback=statBrowses)
     projectHistory = reversed(PROJECT_HISTORY)  # 项目更新日志
 
     return render_template('index.html', **locals())

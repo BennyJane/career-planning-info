@@ -7,6 +7,7 @@ import random
 import datetime
 from sqlalchemy import func
 from sqlalchemy import and_
+from flask import current_app
 
 from web.extension import db
 from web.models import User
@@ -48,9 +49,11 @@ def statBrowses():
 
 
 def insert_ip(ip, funcName):
-    brose = StatBrowse(id=produceId(), ip=ip, origin=funcName)
-    db.session.add(brose)
-    db.session.commit()
+    app = current_app._get_current_object()
+    with app.app_context():
+        brose = StatBrowse(id=produceId(), ip=ip, origin=funcName)
+        db.session.add(brose)
+        db.session.commit()
 
 
 def statInfoAction(ip, action='like'):
@@ -93,6 +96,7 @@ def isLike(ip):
 
 
 def addMsg(body, user=None):
+    db.session.execute()
     msg = Message(body=body)
     msg.user = user
     db.session.add(msg)

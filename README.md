@@ -2,6 +2,10 @@
 Python的职位信息；
 项目网站URL：http://career.pygorun.com/
 
+### 项目功能说明
+
+
+
 ### 项目文件结构说明
 ```text
 /_compat             版本、平台兼容处理

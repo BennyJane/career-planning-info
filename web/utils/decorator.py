@@ -3,26 +3,21 @@
 # PROJECT    : career-planning-info
 # Time       ：2020/12/15 19:59
 # Warning    ：The Hard Way Is Easier
-
-import datetime
 from flask import request
 from flask import current_app
 from functools import wraps
 from threading import Thread
 
-from web.extension import db
-from web.models import StatBrowse
-from web.utils.libs import produceId
 from web.utils.modelSql import insert_ip
 from web.extension import redis_manager
 
 
 def statPageView(f):
-    """统计页面访问次数: 使用消息队列"""
+    """统计页面访问次数"""
 
     @wraps(f)
     def wrapper(*args, **kwargs):
-        # 　TODO 向消息队列中添加访问数据; 修改该逻辑,减少服务器压力
+        # 　TODO 改为异步非阻塞执行
         # 获取访问页面的视图函数名称,包含蓝图名称
         origin_view_func = request.endpoint
         ip = request.remote_addr
