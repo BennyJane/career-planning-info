@@ -92,7 +92,7 @@ class StatInfo(db.Model):
     action = Column(db.String(32), default='', comment="访客行为: like-点赞, download-下载")
     count = Column(db.INTEGER, default=0, comment="统计单个IP下载次数")  # 允许无限下载
     create_at = Column(db.DateTime, default=datetime.now)
-    update_at = Column(db.DateTime, default=datetime.now)
+    update_at = Column(db.DateTime, default=datetime.now , onupdate=datetime.now, nullable=False)
 
     __mapper_args__ = {'order_by': [create_at.desc()]}
 
@@ -110,7 +110,7 @@ class StatBrowse(db.Model):
     # page_views = Column(db.BigInteger, default=0)
     origin = Column(db.String(120), default="", comment="网站视图函数名称")
     create_at = Column(db.DateTime, default=datetime.now)
-    update_at = Column(db.DateTime, default=datetime.now)
+    update_at = Column(db.DateTime, default=datetime.now , onupdate=datetime.now, nullable=False)
 
     __mapper_args__ = {'order_by': [create_at.desc()]}
 
