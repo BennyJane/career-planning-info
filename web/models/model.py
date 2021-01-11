@@ -119,3 +119,7 @@ class StatBrowse(db.Model):
             _id = produceId()
             kwargs["id"] = _id
         super().__init__(*args, **kwargs)
+
+    @property
+    def create_time_str(self, formatter="%Y-%m-%d %H:%M:%S"):
+        return self.create_at.strftime(formatter)

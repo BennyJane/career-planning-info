@@ -25,7 +25,8 @@ def statPageView(f):
         if is_stated:
             return f(*args, **kwargs)
         # 增加一条记录; 异步执行
-        Thread(target=insert_ip, args=(ip, origin_view_func)).start()
+        app = current_app._get_current_object()
+        Thread(target=insert_ip, args=(app, ip, origin_view_func)).start()
         return f(*args, **kwargs)
 
     return wrapper

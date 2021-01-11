@@ -27,16 +27,17 @@ sqlite3: 中使用func.day() 报错,func没有该方法
 def statBrowses():
     total = StatBrowse.query.count()
     browses = {}
-    now = datetime.datetime.utcnow()
-    day_before_10days = now + datetime.timedelta(days=-10)
-    all_browses = StatBrowse.query.filter(StatBrowse.create_at > day_before_10days) \
-        .order_by(StatBrowse.create_at).all()
+    # todo 使用group by根据时间字段的年月日来分组
+    all_browses = StatBrowse.query.order_by(StatBrowse.create_at.desc()).all()
     for item in all_browses:
         date = getFormatDate(item.create_at, _format="%Y-%m-%d")
         if date not in browses:
+            if len(browses.keys()) >= 10:  # 只需要找出最近10天的数据
+                break
             browses[date] = 1
         else:
             browses[date] = browses[date] + 1
+
     max_pv = max(browses.values()) * 1.2
     browses_ratio = []
     for key, value in browses.items():
@@ -45,11 +46,11 @@ def statBrowses():
             "ratio": round(int(value) / max_pv * 100, 1),
             "count": value,
         })
+    browses_ratio.sort(key=lambda x: x['date'])
     return dict(total=total, browses=browses_ratio)
 
 
-def insert_ip(ip, funcName):
-    app = current_app._get_current_object()
+def insert_ip(app, ip, funcName):
     with app.app_context():
         brose = StatBrowse(id=produceId(), ip=ip, origin=funcName)
         db.session.add(brose)

@@ -7,7 +7,6 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-from logging.handlers import SMTPHandler
 
 from flask import request
 

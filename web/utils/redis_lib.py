@@ -31,13 +31,14 @@ class RedisManager(object):
         is_exist = self.conn.get(key)
         if not is_exist:
             value = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:S")
-            self.conn.set(key, value, ex=60 * 60 * 12)
+            self.conn.set(key, value, ex=60 * 60 * 1)
             return False
         return True
 
     def bar_table_data(self, callback=None):
         key = "career:bar:data"
         bar_data = self.conn.get(key)
+        bar_data = None
         if not bar_data:
             bar_data = callback()
             bar_data_str = json.dumps(bar_data, ensure_ascii=False)

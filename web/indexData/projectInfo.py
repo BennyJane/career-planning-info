@@ -68,4 +68,4 @@ end = [
     history(pencil_icon, lastInfo['date'], lastInfo['info']),
 ]
 
-PROJECT_HISTORY = histories[-4:-1] + end
+PROJECT_HISTORY = histories[-6:-1] + end
